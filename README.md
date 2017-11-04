@@ -1,3 +1,3 @@
 # YoelTan-RPL-Project
 
-Project RPL Backup jika sesuatu yang tidak diinginkan terjadi lagi.
+Sebuah project untuk mengisi waktu selo.
