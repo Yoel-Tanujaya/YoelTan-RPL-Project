@@ -7,11 +7,28 @@ package netducation;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
-public class LoginLogicClass {    
+public class LoginLogicClass {
+    public static String seed="SoftwareEngineering";
+    
+    public static String encrypting(String text, String seed) {
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(seed);
+        String encrypted= encryptor.encrypt(text);
+        return encrypted;
+    }
+    
+    public static String decrypting(String encryptedText, String seed) {
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(seed);
+        String decrypted = encryptor.decrypt(encryptedText);
+        return decrypted;
+    }
+    
     public static Boolean userValidation(String user, String pass) {
         Users result = DatabaseClass.selectQueryUsersSingular(user);
-        if ((result.getUsername() == null ? user == null : result.getUsername().equals(user)) && (result.getPassword() == null ? pass == null : result.getPassword().equals(pass))) {
+        if ((result.getUsername() == null ? user == null : result.getUsername().equals(user)) && (decrypting(result.getPassword(),seed) == null ? pass == null : decrypting(result.getPassword(),seed).equals(pass))) {
             System.out.println("User valid");
             return true;
         }
@@ -47,11 +64,11 @@ public class LoginLogicClass {
         }
         System.out.println(errorIndicator + " " + validity);
         if (validity == true && email.endsWith("@netducation.id")) {
-            DatabaseClass.insertQuery(user, pass, email, 1);
+            DatabaseClass.insertQuery(user, encrypting(pass,seed), email, 1);
             errorIndicator = 5; //all valid, ADMIN created
         }
         else if (validity == true) {
-            DatabaseClass.insertQuery(user, pass, email, 2);
+            DatabaseClass.insertQuery(user, encrypting(pass,seed), email, 2);
             errorIndicator = 0; //all valid, user created
         }
         return errorIndicator;
@@ -81,7 +98,7 @@ public class LoginLogicClass {
         }
         System.out.println(errorIndicator + " " + validity);
         if (validity == true) {
-            DatabaseClass.updateQueryAll(user, pass, email);
+            DatabaseClass.updateQueryAll(user, encrypting(pass,seed), email);
             errorIndicator = 0; //all valid, user created
         }
         return errorIndicator;
@@ -103,7 +120,7 @@ public class LoginLogicClass {
         }
         System.out.println(errorIndicator + " " + validity);
         if (validity == true) {
-            DatabaseClass.updateQueryUsername(user, pass, email);
+            DatabaseClass.updateQueryUsername(user, encrypting(pass,seed), email);
             errorIndicator = 0; //all valid, user created
         }
         return errorIndicator;
@@ -119,7 +136,7 @@ public class LoginLogicClass {
         }
         System.out.println(errorIndicator + " " + validity);
         if (validity == true) {
-            DatabaseClass.updateQueryPassword(user, pass);
+            DatabaseClass.updateQueryPassword(user, encrypting(pass,seed));
             errorIndicator = 0; //all valid, user created
         }
         return errorIndicator;
@@ -145,7 +162,7 @@ public class LoginLogicClass {
         }
         System.out.println(errorIndicator + " " + validity);
         if (validity == true) {
-            DatabaseClass.updateQueryEmail(user, pass, email);
+            DatabaseClass.updateQueryEmail(user, encrypting(pass,seed), email);
             errorIndicator = 0; //all valid, user created
         }
         return errorIndicator;

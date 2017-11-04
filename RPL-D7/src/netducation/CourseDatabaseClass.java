@@ -50,7 +50,6 @@ public class CourseDatabaseClass {
                 Course c = new Course();
                 c.setId(rs.getString("courseID"));
                 c.setNama(rs.getString("nama"));
-                c.setImage(rs.getString("image"));
                 c.setPoinMinimum(rs.getInt("minimumPoin"));
                 c.setPoinDapat(rs.getInt("poinDapat"));
                 result.add(c);
@@ -65,7 +64,7 @@ public class CourseDatabaseClass {
     
     public static List<Course> selectQueryCourse(String criteria){        
         List<Course> result = new ArrayList<>();
-        String sql = "SELECT * FROM course WHERE nama LIKE '%" + criteria + "%' OR courseID LIKE '" + criteria + "%' ORDER BY poinDapat DESC";
+        String sql = "SELECT * FROM course WHERE nama LIKE '%" + criteria + "%' OR courseID LIKE '" + criteria + "%' ORDER BY poinDapat ASC";
         try (Connection conn = DatabaseClass.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)){
@@ -73,7 +72,6 @@ public class CourseDatabaseClass {
                 Course c = new Course();
                 c.setId(rs.getString("courseID"));
                 c.setNama(rs.getString("nama"));
-                c.setImage(rs.getString("image"));
                 c.setPoinMinimum(rs.getInt("minimumPoin"));
                 c.setPoinDapat(rs.getInt("poinDapat"));
                 result.add(c);
@@ -94,7 +92,6 @@ public class CourseDatabaseClass {
                 Course c = new Course();
                 c.setId(rs.getString("courseID"));
                 c.setNama(rs.getString("nama"));
-                c.setImage(rs.getString("image"));
                 c.setPoinMinimum(rs.getInt("minimumPoin"));
                 c.setPoinDapat(rs.getInt("poinDapat"));
                 result.add(c);
@@ -115,7 +112,6 @@ public class CourseDatabaseClass {
                 Course c = new Course();
                 c.setId(rs.getString("courseID"));
                 c.setNama(rs.getString("nama"));
-                c.setImage(rs.getString("image"));
                 c.setPoinMinimum(rs.getInt("minimumPoin"));
                 c.setPoinDapat(rs.getInt("poinDapat"));
                 result.add(c);
@@ -135,7 +131,6 @@ public class CourseDatabaseClass {
             while (rs.next()) {
                 result.setId(rs.getString("courseID"));
                 result.setNama(rs.getString("nama"));
-                result.setImage(rs.getString("image"));
                 result.setPoinMinimum(rs.getInt("minimumPoin"));
                 result.setPoinDapat(rs.getInt("poinDapat"));
             }
@@ -146,14 +141,13 @@ public class CourseDatabaseClass {
     }
     
     public static void insertQueryCourse(String id, String nama, int poinMin, int poinDapat) {
-        String sql = "INSERT INTO course(courseID,nama,image,minimumPoin,poinDapat) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO course(courseID,nama,minimumPoin,poinDapat) VALUES(?,?,?,?)";
         try (Connection conn = DatabaseClass.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, id);
             pstmt.setString(2, nama);
-            pstmt.setString(3, nama + ".png");
-            pstmt.setInt(4, poinMin);
-            pstmt.setInt(5, poinDapat);
+            pstmt.setInt(3, poinMin);
+            pstmt.setInt(4, poinDapat);
             pstmt.executeUpdate();
             System.out.println("Course created");
         } catch (SQLException e) {

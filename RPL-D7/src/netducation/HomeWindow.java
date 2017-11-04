@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HomeWindow extends javax.swing.JFrame {
 
-    Users x = new Users();
+    public Users x = new Users();
     String namaLogin;
     int poinLogin;
     List<Course> lc = CourseDatabaseClass.selectQueryCourse();
@@ -363,6 +363,14 @@ public class HomeWindow extends javax.swing.JFrame {
                 System.out.println(x.getUsername() + " " + criteria + " " + head + " " + order);
             }
         });
+        courseTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         jScrollPane2.setViewportView(courseTable);
 
         searchCourseButton.setText("SEARCH");
@@ -565,7 +573,7 @@ public class HomeWindow extends javax.swing.JFrame {
             this.courseTable.setModel(CourseLogicClass.showAllCourseData(x));
         }
         else {
-            this.courseTable.setModel(CourseLogicClass.searchCourse(x, searchField.getText()));
+            this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
         }
         this.courseTable.repaint();
     }//GEN-LAST:event_searchCourseButtonActionPerformed

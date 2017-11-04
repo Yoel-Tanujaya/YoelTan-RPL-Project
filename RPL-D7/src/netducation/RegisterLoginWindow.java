@@ -8,6 +8,7 @@ package netducation;
 import java.awt.Dialog;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import netducation.HomeWindow;
 
 /**
  *
@@ -285,6 +286,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
                 RegisterLoginWindow myFrame = new RegisterLoginWindow();
                 myFrame.setTitle("NETDucation Login Page");
                 myFrame.setVisible(true);
+                
             }
         });
         

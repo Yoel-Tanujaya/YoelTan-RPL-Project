@@ -152,7 +152,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         int res = CourseLogicClass.insertCourseValidation(id, nama, poinMin, poinDapat);
         System.out.println(id + " " + nama + " " + poinMin + " " + poinDapat + " ");
         switch(res) {
-            case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENAMBAHKAN COURSE", "Course Added", JOptionPane.OK_OPTION); this.setVisible(false); break;
+            case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENAMBAHKAN COURSE", "Course Added", JOptionPane.INFORMATION_MESSAGE); this.setVisible(false); break;
             case 1: JOptionPane.showMessageDialog(rootPane, "ID SUDAH ADA, SILAHKAN COBA LAGI", "Error", JOptionPane.ERROR_MESSAGE); break;
             case 2: JOptionPane.showMessageDialog(rootPane, "NAMA SUDAH ADA, SILAHKAN COBA LAGI", "Error", JOptionPane.ERROR_MESSAGE); break;
         }
@@ -166,7 +166,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         int poinDapat = Integer.parseInt(this.poinDapatField.getText());
         int res = CourseLogicClass.editCourseValidation(courseID, nama, poinMin, poinDapat);
         switch(res) {
-            case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENGUBAH COURSE", "Course Edited", JOptionPane.OK_OPTION); this.setVisible(false); break;
+            case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENGUBAH COURSE", "Course Edited", JOptionPane.INFORMATION_MESSAGE); this.setVisible(false); break;
             case 2: JOptionPane.showMessageDialog(rootPane, "NAMA SUDAH ADA, SILAHKAN COBA LAGI", "Error", JOptionPane.ERROR_MESSAGE); break;
         }
         h.getCourseTable().repaint();

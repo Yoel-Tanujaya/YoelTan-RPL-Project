@@ -66,7 +66,7 @@ public class CourseLogicClass {
     });
         for (Course c : CourseDatabaseClass.selectQueryCourse(criteria)) {
             if (u.getRole() == 1) tm.addRow(new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()});
-            else if (c.getPoinMinimum() < u.getPoint() && u.getRole() == 2) tm.addRow(new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()});
+            else if (c.getPoinMinimum() <= u.getPoint() && u.getRole() == 2) tm.addRow(new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()});
             System.out.println(c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
         }
         return tm;
@@ -83,7 +83,7 @@ public class CourseLogicClass {
             
             Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
             tm.addRow((Object[]) o);
-            //System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
+            System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
         }
         tm.fireTableDataChanged();
         return tm;
@@ -96,17 +96,23 @@ public class CourseLogicClass {
     new String [] {
         "ID Course", "Nama Course", "Poin Minimum", "Poin Didapat"
     });
-        for (Course c : CourseDatabaseClass.selectQueryCourse()) {
-            if (u.getRole() == 1){
+        if (u.getRole() == 1) {
+            for (Course c : CourseDatabaseClass.selectQueryCourse()) {
                 Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
                 tm.addRow((Object[]) o);
+                System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
             }
-            else if (u.getRole() == 2 && u.getPoint() == c.getPoinMinimum() || u.getPoint() >= c.getPoinMinimum()) {
-                Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
-                tm.addRow((Object[]) o);
-            }
-            //System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
         }
+        else if (u.getRole() == 2) {
+            for (Course c : CourseDatabaseClass.selectQueryCourse()) {
+                if (u.getPoint() >= c.getPoinMinimum()) {
+                    Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
+                    tm.addRow((Object[]) o);
+                    System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
+                }
+            }
+        }
+        
         return tm;
     }
     
@@ -117,16 +123,21 @@ public class CourseLogicClass {
     new String [] {
         "ID Course", "Nama Course", "Poin Minimum", "Poin Didapat"
     });
-        for (Course c : CourseDatabaseClass.selectQueryCourse(criteria, header, order)) {
-            if (u.getRole() == 1){
+        if (u.getRole() == 1) {
+            for (Course c : CourseDatabaseClass.selectQueryCourse(criteria, header, order)) {
                 Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
                 tm.addRow((Object[]) o);
+                System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
             }
-            else if (u.getRole() == 2 && u.getPoint() == c.getPoinMinimum() || u.getPoint() >= c.getPoinMinimum()) {
-                Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
-                tm.addRow((Object[]) o);
+        }
+        else if (u.getRole() == 2) {
+            for (Course c : CourseDatabaseClass.selectQueryCourse(criteria, header, order)) {
+                if (u.getPoint() >= c.getPoinMinimum()) {
+                    Object o = new Object[]{c.getId(),c.getNama(),c.getPoinMinimum(),c.getPoinDapat()};
+                    tm.addRow((Object[]) o);
+                    System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
+                }
             }
-            //System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
         }
         return tm;
     }
