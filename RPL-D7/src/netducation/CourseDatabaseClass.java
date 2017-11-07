@@ -105,6 +105,7 @@ public class CourseDatabaseClass {
     public static List<Course> selectQueryCourse(String criteria, String filter, String order){        
         List<Course> result = new ArrayList<>();
         String sql = "SELECT * FROM course WHERE nama LIKE '%" + criteria + "%' OR courseID LIKE '" + criteria + "%' ORDER BY " + filter + " " + order;
+        System.out.println(sql);
         try (Connection conn = DatabaseClass.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)){
