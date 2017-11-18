@@ -13,9 +13,10 @@ package netducation;
 public class Course {
     private String nama;
     private String id;
-    private String image;
     private int poinMinimum;
     private int poinDapat;
+    private String teacher;
+    private String language;
     
     Course() {
         
@@ -50,17 +51,17 @@ public class Course {
     }
 
     /**
-     * @return the image
+     * @return the language
      */
-    public String getImage() {
-        return image;
+    public String getLanguage() {
+        return language;
     }
 
     /**
-     * @param image the image to set
+     * @param language the language to set
      */
-    public void setImage(String image) {
-        this.image = image;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     /**
@@ -91,5 +92,17 @@ public class Course {
         this.poinDapat = poinDapat;
     }
     
-    
+    /**
+     * @return the teacher
+     */
+    public String getTeacher() {
+        return teacher;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
 }

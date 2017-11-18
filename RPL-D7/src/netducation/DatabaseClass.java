@@ -25,7 +25,7 @@ public class DatabaseClass {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
-            System.out.println("Connection to SQLite has been established.");
+            //System.out.println("Connection to SQLite has been established.");
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -99,7 +99,7 @@ public class DatabaseClass {
                 result.setRole(rs.getInt("role"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("User DB Class "+e.getMessage());
         }
         return result;
     }
@@ -207,6 +207,19 @@ public class DatabaseClass {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void updatePoint(String user, int poin) {
+        String sql = "UPDATE users SET point = point + ? "
+                + "WHERE username = ?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, poin);
+            pstmt.setString(2, user);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("PASS "+e.getMessage());
         }
     }
 }

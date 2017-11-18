@@ -23,6 +23,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
     Course c = new Course();
     String courseID;
     HomeWindow h = new HomeWindow();
+    Users x;
     
     public void setCourseLabel(String text) {
         this.courseLabel.setText(text);
@@ -149,7 +150,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         String nama = this.namaCourseField.getText();
         int poinMin = Integer.parseInt(this.minPoinField.getText());
         int poinDapat = Integer.parseInt(this.poinDapatField.getText());
-        int res = CourseLogicClass.insertCourseValidation(id, nama, poinMin, poinDapat);
+        int res = CourseLogicClass.insertCourseValidation(id, nama, poinMin, poinDapat, x);
         System.out.println(id + " " + nama + " " + poinMin + " " + poinDapat + " ");
         switch(res) {
             case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENAMBAHKAN COURSE", "Course Added", JOptionPane.INFORMATION_MESSAGE); this.setVisible(false); break;

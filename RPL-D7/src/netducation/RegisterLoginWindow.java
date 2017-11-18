@@ -5,10 +5,7 @@
  */
 package netducation;
 
-import java.awt.Dialog;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import netducation.HomeWindow;
 
 /**
  *
@@ -74,6 +71,12 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         registerLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         registerLabel.setText("Daftar Baru");
 
+        loginUsernameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginUsernameFieldActionPerformed(evt);
+            }
+        });
+
         loginNameLabel.setText("Username:");
 
         loginPassLabel.setText("Password:");
@@ -104,6 +107,12 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
 
         loginConfirmationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         loginConfirmationLabel.setText("SELAMAT DATANG DI NETDUCATION");
+
+        loginPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginPasswordFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,7 +219,6 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         HomeWindow hw = new HomeWindow();
         Users dataToSend = DatabaseClass.selectQueryUsersSingular(loginUsernameField.getText());
-        JDialog j = new JDialog(new JDialog(this),Dialog.ModalityType.DOCUMENT_MODAL);
         Boolean res = LoginLogicClass.userValidation(loginUsernameField.getText(), String.valueOf(loginPasswordField.getPassword()));
         if (res) {
             hw.setVisible(true);
@@ -235,7 +243,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         String email = registerEmailField.getText();
         int res = LoginLogicClass.registerValidation(user, pass, rePass, email);
         switch (res) {
-            case 0: JOptionPane.showMessageDialog(rootPane, "SELAMAT " + user + ", AKUN ANDA BERHASIL DIBUAT. SILAHKAN LOGIN", "Registration Success", JOptionPane.OK_OPTION); clearText(); break;
+            case 0: JOptionPane.showMessageDialog(rootPane, "SELAMAT " + user + ", AKUN ANDA BERHASIL DIBUAT. SILAHKAN LOGIN", "Registration Success", JOptionPane.INFORMATION_MESSAGE); clearText(); break;
             case 1: JOptionPane.showMessageDialog(rootPane, "EMAIL YANG ANDA MASUKKAN TIDAK VALID, SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE);break;
             case 2: JOptionPane.showMessageDialog(rootPane, "PASSWORD YANG ANDA MASUKKAN TIDAK COCOK, SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE);break;
             case 3: JOptionPane.showMessageDialog(rootPane, "USERNAME SUDAH DIGUNAKAN, MASUKKAN USERNAME LAIN", "Registration Failed", JOptionPane.ERROR_MESSAGE); break;
@@ -244,6 +252,14 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
             default: JOptionPane.showMessageDialog(rootPane, "SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE); clearText(); break;
         }
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void loginPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPasswordFieldActionPerformed
+        this.loginButtonActionPerformed(evt);
+    }//GEN-LAST:event_loginPasswordFieldActionPerformed
+
+    private void loginUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameFieldActionPerformed
+        this.loginButtonActionPerformed(evt);
+    }//GEN-LAST:event_loginUsernameFieldActionPerformed
     
     public void clearText() {
         loginPasswordField.setText("");
