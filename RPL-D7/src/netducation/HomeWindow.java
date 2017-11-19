@@ -5,9 +5,12 @@
  */
 package netducation;
 
+import com.lowagie.text.DocumentException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -120,8 +123,7 @@ public class HomeWindow extends javax.swing.JFrame {
         laporanNamaLabel = new javax.swing.JLabel();
         laporanPointLabel = new javax.swing.JLabel();
         laporanRankLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        saveToPdfButton = new javax.swing.JButton();
         laporanInfoLabel = new javax.swing.JLabel();
         namaUser = new javax.swing.JLabel();
         pointUser = new javax.swing.JLabel();
@@ -325,7 +327,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        HomeLaporanWindow.setSize(new java.awt.Dimension(606, 756));
+        HomeLaporanWindow.setSize(new java.awt.Dimension(606, 800));
 
         jScrollPane1.setViewportView(laporanCourseTable);
 
@@ -339,9 +341,12 @@ public class HomeWindow extends javax.swing.JFrame {
 
         laporanRankLabel.setText("RANK:  ");
 
-        jButton1.setText("SAVE AS PDF");
-
-        jButton2.setText("SAVE AS CSV");
+        saveToPdfButton.setText("SAVE AS PDF");
+        saveToPdfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveToPdfButtonActionPerformed(evt);
+            }
+        });
 
         laporanInfoLabel.setText("INFO");
 
@@ -369,9 +374,7 @@ public class HomeWindow extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeLaporanWindowLayout.createSequentialGroup()
                         .addComponent(laporanInfoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(saveToPdfButton))
                     .addGroup(HomeLaporanWindowLayout.createSequentialGroup()
                         .addGroup(HomeLaporanWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -414,10 +417,9 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(HomeLaporanWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(saveToPdfButton)
                     .addComponent(laporanInfoLabel))
                 .addContainerGap())
         );
@@ -429,7 +431,6 @@ public class HomeWindow extends javax.swing.JFrame {
         rateButtonGroup.add(this.course5StarRating);
 
         rateWindow.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        rateWindow.setPreferredSize(new java.awt.Dimension(320, 310));
         rateWindow.setResizable(false);
         rateWindow.setSize(new java.awt.Dimension(303, 299));
 
@@ -1014,14 +1015,22 @@ public class HomeWindow extends javax.swing.JFrame {
         String poin = String.valueOf(x.getPoint());
         this.namaUser.setText(x.getUsername());
         this.pointUser.setText(poin);
-        if (x.getRole() == 1) this.rankUser.setText("Administrator");
-        else if (x.getPoint() >= 0 && x.getPoint() <= 500) this.rankUser.setText("Beginner");
-        else if (x.getPoint() > 501 && x.getPoint() <= 1000) this.rankUser.setText("Elite");
-        else if (x.getPoint() > 1001 && x.getPoint() <= 1500) this.rankUser.setText("Professional");
-        else if (x.getPoint() > 1501 && x.getPoint() <= 2000) this.rankUser.setText("Master");
-        else if (x.getPoint() > 2001 && x.getPoint() <= 3000) this.rankUser.setText("Expert");
-        else if (x.getPoint() > 3001) this.rankUser.setText("AI");
-        this.laporanCourseTable.setModel(RelationalLogicClass.showCourseTakenByUsername(x));
+        if (x.getRole() == 1) {
+            this.jLabel7.setText("COURSE YANG DIPUBLISH");
+            this.pointUser.setText(RelationalDatabaseClass.adminAverageRating(x.getUsername()));
+            this.rankUser.setText("Administrator");
+            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseByAdmin(x));
+        }
+        else {
+            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseTakenByUsername(x));
+            if (x.getPoint() >= 0 && x.getPoint() <= 500) this.rankUser.setText("Beginner");
+            else if (x.getPoint() > 501 && x.getPoint() <= 1000) this.rankUser.setText("Elite");
+            else if (x.getPoint() > 1001 && x.getPoint() <= 1500) this.rankUser.setText("Professional");
+            else if (x.getPoint() > 1501 && x.getPoint() <= 2000) this.rankUser.setText("Master");
+            else if (x.getPoint() > 2001 && x.getPoint() <= 3000) this.rankUser.setText("Expert");
+            else if (x.getPoint() > 3001) this.rankUser.setText("AI");
+        }
+        
         
     }//GEN-LAST:event_homeLaporanButtonActionPerformed
 
@@ -1149,6 +1158,16 @@ public class HomeWindow extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_rateTeacherButtonActionPerformed
+
+    private void saveToPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToPdfButtonActionPerformed
+        try {
+            PDFFileClass.PrintFrameToPDF(HomeLaporanWindow, x.getUsername());
+            JOptionPane.showMessageDialog(rootPane, "PDF Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (DocumentException ex) {
+            JOptionPane.showMessageDialog(HomeLaporanWindow, "Failed to save PDF", "ERROR", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(HomeWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveToPdfButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1221,8 +1240,6 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JButton homeTerminateButton;
     private javax.swing.JButton homeTestButton;
     private javax.swing.JLabel idCourseRate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -1258,6 +1275,7 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JButton rateCourseButton;
     private javax.swing.JButton rateTeacherButton;
     private javax.swing.JFrame rateWindow;
+    private javax.swing.JButton saveToPdfButton;
     private javax.swing.JButton searchCourseButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JButton tambahCourseButton;

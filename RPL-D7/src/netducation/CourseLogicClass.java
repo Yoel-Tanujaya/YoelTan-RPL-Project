@@ -239,11 +239,6 @@ public class CourseLogicClass {
                     tm.addRow((Object[]) o);
                     System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
                 }
-                else if (avgRate(c.getId())==0) {
-                    Object o = new Object[]{c.getId(),c.getNama(),bahasaProgram(c.getId()),c.getPoinMinimum(),c.getPoinDapat(),c.getTeacher(),avgRate(c.getId())};
-                    tm.addRow((Object[]) o);
-                    System.out.println(i++ + " " + c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
-                }
             }
         }
         else if (u.getRole() == 2) {
