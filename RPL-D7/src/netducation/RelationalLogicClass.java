@@ -106,17 +106,4 @@ public class RelationalLogicClass {
         return tm;
     }
     
-    public static DefaultTableModel showCourseByAdmin(Users u) {
-        DefaultTableModel tm = new DefaultTableModel(new Object [][] {
-    },
-    new String [] {
-        "ID Course", "Nama Course", "Average Rating", "User yang sudah ambil"
-    });
-        for (Course c : RelationalDatabaseClass.selectCourseByAdmin(u.getUsername())) {
-            Object o = new Object[]{c.getId(),c.getNama(),RelationalDatabaseClass.courseAverageRating(c.getId()),RelationalDatabaseClass.countUserTakeCourse(c.getId())};
-            tm.addRow((Object[]) o);
-            System.out.println(c.getId() + " " + c.getNama() + " " + c.getPoinDapat() + " " + c);
-        }
-        return tm;
-    }
 }

@@ -241,57 +241,6 @@ public class RelationalDatabaseClass {
         return res;
     }
     
-    public static List<Course> selectCourseByAdmin(String admin, String header, String order) {
-        List<Course> r = new ArrayList<>();
-        String sql = "SELECT courseID, nama FROM course WHERE teacher='" + admin + "' ORDER BY " + header + " " + order + "";
-        try (Connection conn = DatabaseClass.connect();
-            Statement stmt  = conn.createStatement();
-            ResultSet rs    = stmt.executeQuery(sql)){
-            while (rs.next()) {
-                Course c = new Course();
-                c.setId(rs.getString("courseID"));
-                c.setNama(rs.getString("nama"));
-                r.add(c);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return r;
-    }
-    
-    public static List<Course> selectCourseByAdmin(String admin) {
-        List<Course> r = new ArrayList<>();
-        String sql = "SELECT courseID, nama FROM course WHERE teacher='" + admin + "'";
-        try (Connection conn = DatabaseClass.connect();
-            Statement stmt  = conn.createStatement();
-            ResultSet rs    = stmt.executeQuery(sql)){
-            while (rs.next()) {
-                Course c = new Course();
-                c.setId(rs.getString("courseID"));
-                c.setNama(rs.getString("nama"));
-                r.add(c);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return r;
-    }
-    
-    public static int countUserTakeCourse(String courseID) {
-        int x=0;
-        String sql = "SELECT COUNT(username) FROM course_taken WHERE courseID='" + courseID + "'";
-        try (Connection conn = DatabaseClass.connect();
-            Statement stmt  = conn.createStatement();
-            ResultSet rs    = stmt.executeQuery(sql)){
-            while (rs.next()) {
-                x = rs.getInt("COUNT(username)");
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return x;
-    }
-    
     public static void insertCourseTaken(String user, String courseID){        
         String sql = "INSERT INTO course_taken(courseID,username) VALUES(?,?)";
         try (Connection conn = DatabaseClass.connect();
