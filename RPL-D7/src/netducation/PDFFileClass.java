@@ -16,15 +16,24 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
  * @author yoelt
  */
 public class PDFFileClass {
-    public static void PrintFrameToPDF(JFrame print, String user) throws DocumentException {
+    public static void PrintFrameToPDF(JFrame print, String user) {
         try {
             Document doc = new Document();
+//            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                UIManager.setLookAndFeel(info.getClassName());
+//                break;
+//                }
+//            }
             
             File f = new File("C:\\Users\\yoelt\\Documents\\5th Semester\\RPL - Software Engineering\\PROJECT RPL\\PdfNetducation\\" + user + ".pdf");
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream (f));
@@ -40,7 +49,6 @@ public class PDFFileClass {
             g2d.dispose();
             doc.newPage();
             doc.close();
-            
         } catch (IOException | DocumentException e) {
             System.out.println(e.getMessage());
         }

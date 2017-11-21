@@ -146,12 +146,12 @@ public class RelationalDatabaseClass {
     
     public static String selectRatingByCourseSingular(String courseID, String user){
         String res="";
-        String sql = "SELECT rc.courseID, rc.rating, c.nama, u.username FROM course AS c, rating_course AS rc, users AS u WHERE rc.courseID='" + courseID + "' AND u.username='" + user + "'";
+        String sql = "SELECT rating FROM rating_course WHERE courseID='" + courseID + "' AND username='" + user + "'";
         try (Connection conn = DatabaseClass.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)){
             while (rs.next()) {
-                res = rs.getString("rc.rating");
+                res = rs.getString("rating");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -228,7 +228,7 @@ public class RelationalDatabaseClass {
     
     public static String selectRatingByAdminSingular(String admin, String user){ 
         String res="";
-        String sql = "SELECT usernameRater, usernameAdmin FROM rating_admin WHERE usernameAdmin='" + admin + "' AND usernameRater='" + user + "'";
+        String sql = "SELECT rating FROM rating_admin WHERE usernameAdmin='" + admin + "' AND usernameRater='" + user + "'";
         try (Connection conn = DatabaseClass.connect();
             Statement stmt  = conn.createStatement();
             ResultSet rs    = stmt.executeQuery(sql)){
@@ -328,6 +328,72 @@ public class RelationalDatabaseClass {
             pstmt.setInt(3, rating);
             pstmt.executeUpdate();
             System.out.println("Rating added for this admin");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void nullUserRatingCourse(String user) {
+        String sql = "UPDATE rating_course SET username=null WHERE username=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void nullUserRatingAdmin(String user) {
+        String sql = "UPDATE rating_admin SET usernameRater=null WHERE usernameRater=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void nullUserCourseTaken(String user) {
+        String sql = "UPDATE course_taken SET username=null WHERE username=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void deleteCourseRatingCourse(String courseID) {
+        String sql = "DELETE FROM rating_course WHERE courseID=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, courseID);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void deleteAdminRatingAdmin(String user) {
+        String sql = "DELETE FROM rating_admin WHERE usernameAdmin=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void deleteCourseTaken(String courseID) {
+        String sql = "DELETE FROM course_taken WHERE courseID=?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, courseID);
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

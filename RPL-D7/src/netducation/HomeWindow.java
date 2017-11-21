@@ -671,35 +671,35 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
-        course1StarRating.setText("★");
+        course1StarRating.setText("*");
         course1StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 course1StarRatingActionPerformed(evt);
             }
         });
 
-        course2StarRating.setText("★★");
+        course2StarRating.setText("**");
         course2StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 course2StarRatingActionPerformed(evt);
             }
         });
 
-        course3StarRating.setText("★★★");
+        course3StarRating.setText("***");
         course3StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 course3StarRatingActionPerformed(evt);
             }
         });
 
-        course4StarRating.setText("★★★★");
+        course4StarRating.setText("****");
         course4StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 course4StarRatingActionPerformed(evt);
             }
         });
 
-        course5StarRating.setText("★★★★★");
+        course5StarRating.setText("*****");
         course5StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 course5StarRatingActionPerformed(evt);
@@ -712,7 +712,7 @@ public class HomeWindow extends javax.swing.JFrame {
 
         jLabel9.setText("Filter By Minimum Point:");
 
-        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "C Programming Language", "C++ Programming Language", "Phyton Language", "Apple Swift 3", "Kotlin Beta for Android", "Java" }));
+        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C", "C++", "Phyton", "Swift 3", "Kotlin", "Java" }));
         courseProgrammingLanguageOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 courseProgrammingLanguageOptionActionPerformed(evt);
@@ -760,9 +760,21 @@ public class HomeWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(course1StarRating)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(course2StarRating)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(course3StarRating)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(course4StarRating)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(course5StarRating)
+                        .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tambahCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -777,14 +789,13 @@ public class HomeWindow extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(rateCourseButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rateTeacherButton)))
+                                .addComponent(rateTeacherButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(homeImgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -802,29 +813,20 @@ public class HomeWindow extends javax.swing.JFrame {
                                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(searchCourseButton)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(minPoinSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(17, 17, 17)
-                                    .addComponent(poinDapatSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(49, 49, 49)
-                                    .addComponent(course1StarRating)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(course2StarRating)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(course3StarRating)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(course4StarRating)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(course5StarRating)
-                                    .addGap(4, 4, 4))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(20, 20, 20)
+                                .addComponent(poinDapatSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(minPoinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -846,13 +848,13 @@ public class HomeWindow extends javax.swing.JFrame {
                     .addComponent(searchCourseButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(course1StarRating)
                     .addComponent(course2StarRating)
                     .addComponent(course3StarRating)
                     .addComponent(course4StarRating)
-                    .addComponent(course5StarRating)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(course5StarRating))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(poinDapatSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -860,7 +862,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(minPoinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -945,6 +947,8 @@ public class HomeWindow extends javax.swing.JFrame {
             String decryptedPass = LoginLogicClass.decrypting(x.getPassword(), LoginLogicClass.seed);
             if (decryptedPass.equals(String.valueOf(terminatePasswordField1.getPassword()))) {
                 DatabaseClass.deleteQuery(x.getUsername());
+                if (x.getRole()==1) RelationalLogicClass.deleteAdmin(x.getUsername());
+                else if (x.getRole()==2) RelationalLogicClass.deleteUser(x.getUsername());
                 this.TerminateAccount.setVisible(false);
                 JOptionPane.showMessageDialog(rootPane, "YOUR ACCOUNT HAS BEEN TERMINATED", "Termination Complete", JOptionPane.OK_OPTION);
                 this.setVisible(false);
@@ -968,6 +972,7 @@ public class HomeWindow extends javax.swing.JFrame {
         String id = (String) this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0);
         int x = JOptionPane.showConfirmDialog(rootPane, "Yakin ingin menghapus course??", "Delete Course", JOptionPane.YES_NO_OPTION);
         if (x == JOptionPane.YES_OPTION) {
+            RelationalLogicClass.deleteCourse(id);
             CourseLogicClass.deleteCourse(id);
         }
         else {
@@ -1160,13 +1165,8 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_rateTeacherButtonActionPerformed
 
     private void saveToPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToPdfButtonActionPerformed
-        try {
-            PDFFileClass.PrintFrameToPDF(HomeLaporanWindow, x.getUsername());
-            JOptionPane.showMessageDialog(rootPane, "PDF Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (DocumentException ex) {
-            JOptionPane.showMessageDialog(HomeLaporanWindow, "Failed to save PDF", "ERROR", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(HomeWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        PDFFileClass.PrintFrameToPDF(HomeLaporanWindow, x.getUsername());
+        JOptionPane.showMessageDialog(rootPane, "PDF Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_saveToPdfButtonActionPerformed
     
     /**

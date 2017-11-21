@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDatabaseClass {   
-    
     //QUERY UNTUK SELECT SEMUA COURSE YANG ADA DALAM DATABASE, TANPA CRITERIA ATAU PARAMETER KHUSUS, HANYA SELECT ALL FORM COURSE SAJA
     public static List<Course> selectQueryCourse(){        
         List<Course> result = new ArrayList<>();

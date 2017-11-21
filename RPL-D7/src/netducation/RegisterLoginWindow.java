@@ -5,6 +5,7 @@
  */
 package netducation;
 
+import com.alee.laf.WebLookAndFeel;
 import javax.swing.JOptionPane;
 
 /**
@@ -248,7 +249,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
             case 2: JOptionPane.showMessageDialog(rootPane, "PASSWORD YANG ANDA MASUKKAN TIDAK COCOK, SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE);break;
             case 3: JOptionPane.showMessageDialog(rootPane, "USERNAME SUDAH DIGUNAKAN, MASUKKAN USERNAME LAIN", "Registration Failed", JOptionPane.ERROR_MESSAGE); break;
             case 4: JOptionPane.showMessageDialog(rootPane, "EMAIL SUDAH TERDAFTAR, SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE); break;
-            case 5: JOptionPane.showMessageDialog(rootPane, "SELAMAT ADMIN " + user + ", AKUN BERHASIL DIBUAT. SILAHKAN LOGIN", "Admin Account Created", JOptionPane.ERROR_MESSAGE); clearText(); break;
+            case 5: JOptionPane.showMessageDialog(rootPane, "SELAMAT ADMIN " + user + ", AKUN BERHASIL DIBUAT. SILAHKAN LOGIN", "Admin Account Created", JOptionPane.INFORMATION_MESSAGE); clearText(); break;
             default: JOptionPane.showMessageDialog(rootPane, "SILAHKAN COBA LAGI", "Registration Failed", JOptionPane.ERROR_MESSAGE); clearText(); break;
         }
     }//GEN-LAST:event_registerButtonActionPerformed
@@ -274,11 +275,6 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -295,10 +291,10 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegisterLoginWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                //WebLookAndFeel.install();
                 RegisterLoginWindow myFrame = new RegisterLoginWindow();
                 myFrame.setTitle("NETDucation Login Page");
                 myFrame.setVisible(true);

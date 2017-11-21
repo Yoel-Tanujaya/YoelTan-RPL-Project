@@ -119,4 +119,19 @@ public class RelationalLogicClass {
         }
         return tm;
     }
+    
+    public static void deleteUser(String user) {
+        RelationalDatabaseClass.nullUserCourseTaken(user);
+        RelationalDatabaseClass.nullUserRatingAdmin(user);
+        RelationalDatabaseClass.nullUserRatingCourse(user);
+    }
+    
+    public static void deleteCourse(String id) {
+        RelationalDatabaseClass.deleteCourseRatingCourse(id);
+        RelationalDatabaseClass.deleteCourseTaken(id);
+    }
+    
+    public static void deleteAdmin(String admin) {
+        RelationalDatabaseClass.deleteAdminRatingAdmin(admin);
+    }
 }

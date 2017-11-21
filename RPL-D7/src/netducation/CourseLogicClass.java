@@ -16,25 +16,25 @@ public class CourseLogicClass {
     public static String bahasaProgram(String id) {
         String ret = "";
         if (id.startsWith("CPL")) {
-            ret = "C Programming Language";
+            ret = "C";
         }
         else if (id.startsWith("CPP")) {
-            ret = "C++ Programming Language";
+            ret = "C++";
         }
         else if (id.startsWith("OOP")) {
             ret = "Java";
         }
         else if (id.startsWith("IOS")) {
-            ret = "Apple Swift 3";
+            ret = "Swift 3";
         }
         else if (id.startsWith("AND")) {
-            ret = "Kotlin Beta for Android";
+            ret = "Kotlin";
         }
         else if (id.startsWith("PHY")) {
-            ret = "Phyton Language";
+            ret = "Phyton";
         }
         else {
-            ret = "Other Language";
+            ret = "Other";
         }
         return ret;
     }
