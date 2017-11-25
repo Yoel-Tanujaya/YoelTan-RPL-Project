@@ -65,6 +65,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         registerRetypePasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         loginLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         loginLabel.setText("Masuk");

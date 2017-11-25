@@ -16,7 +16,7 @@ public class CourseLogicClass {
     public static String bahasaProgram(String id) {
         String ret = "";
         if (id.startsWith("CPL")) {
-            ret = "C";
+            ret = "C Language";
         }
         else if (id.startsWith("CPP")) {
             ret = "C++";

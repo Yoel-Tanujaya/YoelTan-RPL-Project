@@ -125,7 +125,7 @@ public class DatabaseClass {
     
     public static void insertQuery(String user, String pass, String email, int role) {
         String sql = "INSERT INTO users(username,email,password,point,role) VALUES(?,?,?,?,?)";
-        try (Connection conn = DatabaseClass.connect();
+        try (Connection conn = DatabaseClass.connect(); 
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user);
             pstmt.setString(2, email);

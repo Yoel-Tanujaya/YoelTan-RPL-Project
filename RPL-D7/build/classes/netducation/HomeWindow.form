@@ -4,6 +4,7 @@
   <NonVisualComponents>
     <Container class="javax.swing.JFrame" name="HomeEditProfilWindow">
       <Properties>
+        <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[650, 500]"/>
         </Property>
@@ -170,6 +171,7 @@
     </Container>
     <Container class="javax.swing.JFrame" name="TerminateAccount">
       <Properties>
+        <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 400]"/>
         </Property>
@@ -256,6 +258,7 @@
     </Container>
     <Container class="javax.swing.JFrame" name="HomeLaporanWindow">
       <Properties>
+        <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[606, 800]"/>
         </Property>
@@ -587,6 +590,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -963,7 +967,7 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
-            <StringItem index="0" value="C"/>
+            <StringItem index="0" value="C Language"/>
             <StringItem index="1" value="C++"/>
             <StringItem index="2" value="Phyton"/>
             <StringItem index="3" value="Swift 3"/>

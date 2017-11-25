@@ -172,6 +172,7 @@ public class HomeWindow extends javax.swing.JFrame {
         rateCourseButton = new javax.swing.JButton();
         rateTeacherButton = new javax.swing.JButton();
 
+        HomeEditProfilWindow.setResizable(false);
         HomeEditProfilWindow.setSize(new java.awt.Dimension(650, 500));
 
         editEmailLabel.setText("Email:");
@@ -274,6 +275,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        TerminateAccount.setResizable(false);
         TerminateAccount.setSize(new java.awt.Dimension(400, 400));
 
         terminateButton1.setText("HAPUS AKUN :(");
@@ -327,6 +329,7 @@ public class HomeWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        HomeLaporanWindow.setResizable(false);
         HomeLaporanWindow.setSize(new java.awt.Dimension(606, 800));
 
         jScrollPane1.setViewportView(laporanCourseTable);
@@ -550,6 +553,7 @@ public class HomeWindow extends javax.swing.JFrame {
         doRateButtonGroup.add(rate5Course);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         homeTerminateButton.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         homeTerminateButton.setForeground(new java.awt.Color(255, 0, 0));
@@ -712,7 +716,7 @@ public class HomeWindow extends javax.swing.JFrame {
 
         jLabel9.setText("Filter By Minimum Point:");
 
-        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C", "C++", "Phyton", "Swift 3", "Kotlin", "Java" }));
+        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C Language", "C++", "Phyton", "Swift 3", "Kotlin", "Java" }));
         courseProgrammingLanguageOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 courseProgrammingLanguageOptionActionPerformed(evt);
