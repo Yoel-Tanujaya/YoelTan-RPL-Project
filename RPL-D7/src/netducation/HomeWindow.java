@@ -54,6 +54,15 @@ public class HomeWindow extends javax.swing.JFrame {
         
         if (x.getRole() == 1) {
             this.homeImgLabel.setText("<html>WELCOME ADMIN, <br><br>" + x.getUsername() + "</html>");
+            this.homeAdminMenuBarDeleteCourse.setEnabled(true);
+            this.homeAdminMenuBarAddCourse.setEnabled(true);
+            this.homeAdminMenuBarEditCourse.setEnabled(true);
+            this.homeAdminMenuBarAddTest.setEnabled(true);
+            this.homeAdminMenuBarDeleteTest.setEnabled(true);
+            this.homeMenuBarAmbilCourse.setEnabled(false);
+            this.homeMenuBarRateCourse.setEnabled(false);
+            this.homeMenuBarRateTeacher.setEnabled(false);
+            this.homeMenuBarTest.setEnabled(false);
             this.deleteCourseButton.setEnabled(true);
             this.editCourseButton.setEnabled(true);
             this.tambahCourseButton.setEnabled(true);
@@ -65,6 +74,15 @@ public class HomeWindow extends javax.swing.JFrame {
         }
         else {
             this.homeImgLabel.setText("<html>WELCOME, " + x.getUsername() + "<br><br>Poin saat ini : " + x.getPoint() + "</html>");
+            this.homeAdminMenuBarDeleteCourse.setEnabled(false);
+            this.homeAdminMenuBarAddCourse.setEnabled(false);
+            this.homeAdminMenuBarEditCourse.setEnabled(false);
+            this.homeAdminMenuBarAddTest.setEnabled(false);
+            this.homeAdminMenuBarDeleteTest.setEnabled(false);
+            this.homeMenuBarAmbilCourse.setEnabled(true);
+            this.homeMenuBarRateCourse.setEnabled(true);
+            this.homeMenuBarRateTeacher.setEnabled(true);
+            this.homeMenuBarTest.setEnabled(false);
             this.deleteCourseButton.setEnabled(false);
             this.editCourseButton.setEnabled(false);
             this.tambahCourseButton.setEnabled(false);
@@ -171,6 +189,26 @@ public class HomeWindow extends javax.swing.JFrame {
         minPoinSlider = new javax.swing.JSlider();
         rateCourseButton = new javax.swing.JButton();
         rateTeacherButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        homeAccountMenu = new javax.swing.JMenu();
+        homeMenuBarEditProfil = new javax.swing.JMenuItem();
+        homeMenuBarLaporan = new javax.swing.JMenuItem();
+        homeMenuBarTest = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        homeMenuBarLogout = new javax.swing.JMenuItem();
+        homeMenuBarTerminate = new javax.swing.JMenuItem();
+        homeCourseMenu = new javax.swing.JMenu();
+        homeMenuBarAmbilCourse = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        homeMenuBarRateCourse = new javax.swing.JMenuItem();
+        homeMenuBarRateTeacher = new javax.swing.JMenuItem();
+        homeAdminMenu = new javax.swing.JMenu();
+        homeAdminMenuBarAddCourse = new javax.swing.JMenuItem();
+        homeAdminMenuBarEditCourse = new javax.swing.JMenuItem();
+        homeAdminMenuBarDeleteCourse = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        homeAdminMenuBarAddTest = new javax.swing.JMenuItem();
+        homeAdminMenuBarDeleteTest = new javax.swing.JMenuItem();
 
         HomeEditProfilWindow.setResizable(false);
         HomeEditProfilWindow.setSize(new java.awt.Dimension(650, 500));
@@ -757,6 +795,131 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
+        homeAccountMenu.setText("Account");
+
+        homeMenuBarEditProfil.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, 0));
+        homeMenuBarEditProfil.setText("Edit Profile");
+        homeMenuBarEditProfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarEditProfilActionPerformed(evt);
+            }
+        });
+        homeAccountMenu.add(homeMenuBarEditProfil);
+
+        homeMenuBarLaporan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, 0));
+        homeMenuBarLaporan.setText("Laporan");
+        homeMenuBarLaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarLaporanActionPerformed(evt);
+            }
+        });
+        homeAccountMenu.add(homeMenuBarLaporan);
+
+        homeMenuBarTest.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, 0));
+        homeMenuBarTest.setText("Test");
+        homeMenuBarTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarTestActionPerformed(evt);
+            }
+        });
+        homeAccountMenu.add(homeMenuBarTest);
+        homeAccountMenu.add(jSeparator1);
+
+        homeMenuBarLogout.setText("Logout");
+        homeMenuBarLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarLogoutActionPerformed(evt);
+            }
+        });
+        homeAccountMenu.add(homeMenuBarLogout);
+
+        homeMenuBarTerminate.setText("Tutup Akun");
+        homeMenuBarTerminate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarTerminateActionPerformed(evt);
+            }
+        });
+        homeAccountMenu.add(homeMenuBarTerminate);
+
+        jMenuBar1.add(homeAccountMenu);
+
+        homeCourseMenu.setText("Course");
+
+        homeMenuBarAmbilCourse.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
+        homeMenuBarAmbilCourse.setText("Ambil Course");
+        homeMenuBarAmbilCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarAmbilCourseActionPerformed(evt);
+            }
+        });
+        homeCourseMenu.add(homeMenuBarAmbilCourse);
+        homeCourseMenu.add(jSeparator2);
+
+        homeMenuBarRateCourse.setText("Rate Course");
+        homeMenuBarRateCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarRateCourseActionPerformed(evt);
+            }
+        });
+        homeCourseMenu.add(homeMenuBarRateCourse);
+
+        homeMenuBarRateTeacher.setText("Rate Teacher");
+        homeMenuBarRateTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuBarRateTeacherActionPerformed(evt);
+            }
+        });
+        homeCourseMenu.add(homeMenuBarRateTeacher);
+
+        jMenuBar1.add(homeCourseMenu);
+
+        homeAdminMenu.setText("Admin Menu");
+
+        homeAdminMenuBarAddCourse.setText("Add Course");
+        homeAdminMenuBarAddCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeAdminMenuBarAddCourseActionPerformed(evt);
+            }
+        });
+        homeAdminMenu.add(homeAdminMenuBarAddCourse);
+
+        homeAdminMenuBarEditCourse.setText("Edit Course");
+        homeAdminMenuBarEditCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeAdminMenuBarEditCourseActionPerformed(evt);
+            }
+        });
+        homeAdminMenu.add(homeAdminMenuBarEditCourse);
+
+        homeAdminMenuBarDeleteCourse.setText("Delete Course");
+        homeAdminMenuBarDeleteCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeAdminMenuBarDeleteCourseActionPerformed(evt);
+            }
+        });
+        homeAdminMenu.add(homeAdminMenuBarDeleteCourse);
+        homeAdminMenu.add(jSeparator3);
+
+        homeAdminMenuBarAddTest.setText("Add Test");
+        homeAdminMenuBarAddTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeAdminMenuBarAddTestActionPerformed(evt);
+            }
+        });
+        homeAdminMenu.add(homeAdminMenuBarAddTest);
+
+        homeAdminMenuBarDeleteTest.setText("Delete Test");
+        homeAdminMenuBarDeleteTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeAdminMenuBarDeleteTestActionPerformed(evt);
+            }
+        });
+        homeAdminMenu.add(homeAdminMenuBarDeleteTest);
+
+        jMenuBar1.add(homeAdminMenu);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1172,6 +1335,152 @@ public class HomeWindow extends javax.swing.JFrame {
         PDFFileClass.PrintFrameToPDF(HomeLaporanWindow, x.getUsername());
         JOptionPane.showMessageDialog(rootPane, "PDF Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_saveToPdfButtonActionPerformed
+
+    private void homeMenuBarEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarEditProfilActionPerformed
+        this.HomeEditProfilWindow.setVisible(true);
+        this.HomeEditProfilWindow.setAlwaysOnTop(true);
+        this.editEmailField.setText(x.getEmail());
+        this.editUsernameField.setText(x.getUsername());
+    }//GEN-LAST:event_homeMenuBarEditProfilActionPerformed
+
+    private void homeMenuBarTerminateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarTerminateActionPerformed
+        RegisterLoginWindow f1 = new RegisterLoginWindow();
+        String pass = String.valueOf(terminatePasswordField1.getPassword());
+        String rePass = String.valueOf(terminateRetypePasswordField1.getPassword());
+        if (pass.equals(rePass)) {
+            String decryptedPass = LoginLogicClass.decrypting(x.getPassword(), LoginLogicClass.seed);
+            if (decryptedPass.equals(String.valueOf(terminatePasswordField1.getPassword()))) {
+                DatabaseClass.deleteQuery(x.getUsername());
+                if (x.getRole()==1) RelationalLogicClass.deleteAdmin(x.getUsername());
+                else if (x.getRole()==2) RelationalLogicClass.deleteUser(x.getUsername());
+                this.TerminateAccount.setVisible(false);
+                JOptionPane.showMessageDialog(rootPane, "YOUR ACCOUNT HAS BEEN TERMINATED", "Termination Complete", JOptionPane.OK_OPTION);
+                this.setVisible(false);
+                f1.setVisible(true);
+                f1.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            }
+            else {
+                JOptionPane.showMessageDialog(rootPane, "PASSWORD INVALID, SILAHKAN COBA LAGI", "Password Invalid", JOptionPane.ERROR_MESSAGE);
+                terminatePasswordField1.setText("");
+                terminateRetypePasswordField1.setText("");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "PASSWORD TIDAK COCOK, SILAHKAN COBA LAGI", "Password Not Match", JOptionPane.ERROR_MESSAGE);
+            terminatePasswordField1.setText("");
+            terminateRetypePasswordField1.setText("");
+        }
+    }//GEN-LAST:event_homeMenuBarTerminateActionPerformed
+
+    private void homeMenuBarLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarLaporanActionPerformed
+        this.HomeLaporanWindow.setVisible(true);
+        String poin = String.valueOf(x.getPoint());
+        this.namaUser.setText(x.getUsername());
+        this.pointUser.setText(poin);
+        if (x.getRole() == 1) {
+            this.jLabel7.setText("COURSE YANG DIPUBLISH");
+            this.pointUser.setText(RelationalDatabaseClass.adminAverageRating(x.getUsername()));
+            this.rankUser.setText("Administrator");
+            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseByAdmin(x));
+        }
+        else {
+            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseTakenByUsername(x));
+            if (x.getPoint() >= 0 && x.getPoint() <= 500) this.rankUser.setText("Beginner");
+            else if (x.getPoint() > 501 && x.getPoint() <= 1000) this.rankUser.setText("Elite");
+            else if (x.getPoint() > 1001 && x.getPoint() <= 1500) this.rankUser.setText("Professional");
+            else if (x.getPoint() > 1501 && x.getPoint() <= 2000) this.rankUser.setText("Master");
+            else if (x.getPoint() > 2001 && x.getPoint() <= 3000) this.rankUser.setText("Expert");
+            else if (x.getPoint() > 3001) this.rankUser.setText("AI");
+        }
+    }//GEN-LAST:event_homeMenuBarLaporanActionPerformed
+
+    private void homeMenuBarTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarTestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeMenuBarTestActionPerformed
+
+    private void homeMenuBarLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarLogoutActionPerformed
+        RegisterLoginWindow f1 = new RegisterLoginWindow();
+        this.setVisible(false);
+        f1.setVisible(true);
+        f1.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }//GEN-LAST:event_homeMenuBarLogoutActionPerformed
+
+    private void homeMenuBarAmbilCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarAmbilCourseActionPerformed
+        Course c = CourseDatabaseClass.selectQueryCourseSingular((String) courseTable.getModel().getValueAt(courseTable.getSelectedRow(), 0));
+        System.out.println(c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
+        RelationalLogicClass.takeCourse(x, c);
+    }//GEN-LAST:event_homeMenuBarAmbilCourseActionPerformed
+
+    private void homeMenuBarRateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarRateCourseActionPerformed
+        if (RelationalLogicClass.checkRatingCourseValidation(x.getUsername(), (String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0))==false) {
+            JOptionPane.showMessageDialog(rootPane, "Cannot rate (course not taken / double rate)", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            this.rateWindow.setVisible(true);
+            this.labelIDCourse.setText("Nama Course: ");
+            this.labelNamaCourse.setText("ID Course: ");
+            this.idCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0));
+            this.namaCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 1));
+            rateSelected=0; iniRate=1;
+        }
+    }//GEN-LAST:event_homeMenuBarRateCourseActionPerformed
+
+    private void homeMenuBarRateTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarRateTeacherActionPerformed
+        if (RelationalLogicClass.checkRatingAdminValidation(x.getUsername(),(String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5), (String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0))==false) {
+            JOptionPane.showMessageDialog(rootPane, "Cannot rate (course not taken / double rate)", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            this.rateWindow.setVisible(true);
+            this.labelIDCourse.setText("Nama Admin: ");
+            this.labelNamaCourse.setText("Average Rating: ");
+            this.idCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5));
+            this.namaCourseRate.setText(RelationalDatabaseClass.adminAverageRating((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5)));
+            rateSelected=0; iniRate=2;
+        }
+    }//GEN-LAST:event_homeMenuBarRateTeacherActionPerformed
+
+    private void homeAdminMenuBarAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarAddCourseActionPerformed
+        TambahCourseWindow tc = new TambahCourseWindow();
+        tc.x = x;
+        tc.setVisible(true);
+        tc.setCourseLabel("Data Course Baru");
+    }//GEN-LAST:event_homeAdminMenuBarAddCourseActionPerformed
+
+    private void homeAdminMenuBarEditCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarEditCourseActionPerformed
+        TambahCourseWindow tc = new TambahCourseWindow();
+        String cID = (String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0);
+        Course toEdit = CourseDatabaseClass.selectQueryCourseSingular((String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0));
+        if (toEdit.getTeacher().equals(x.getUsername())) {
+            tc.courseID = (String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0);
+            tc.setVisible(true);
+            tc.setCourseLabel("Edit Data Course");
+            tc.setAlwaysOnTop(true);
+            System.out.println(tc.courseID);
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Bukan Course Anda", "Edit Failed", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_homeAdminMenuBarEditCourseActionPerformed
+
+    private void homeAdminMenuBarDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarDeleteCourseActionPerformed
+        String id = (String) this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0);
+        int x = JOptionPane.showConfirmDialog(rootPane, "Yakin ingin menghapus course??", "Delete Course", JOptionPane.YES_NO_OPTION);
+        if (x == JOptionPane.YES_OPTION) {
+            RelationalLogicClass.deleteCourse(id);
+            CourseLogicClass.deleteCourse(id);
+        }
+        else {
+            
+        }
+    }//GEN-LAST:event_homeAdminMenuBarDeleteCourseActionPerformed
+
+    private void homeAdminMenuBarAddTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarAddTestActionPerformed
+        
+    }//GEN-LAST:event_homeAdminMenuBarAddTestActionPerformed
+
+    private void homeAdminMenuBarDeleteTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarDeleteTestActionPerformed
+        
+    }//GEN-LAST:event_homeAdminMenuBarDeleteTestActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1237,10 +1546,26 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel editStatusLabel;
     private javax.swing.JTextField editUsernameField;
     private javax.swing.JLabel editUsernameLabel;
+    private javax.swing.JMenu homeAccountMenu;
+    private javax.swing.JMenu homeAdminMenu;
+    private javax.swing.JMenuItem homeAdminMenuBarAddCourse;
+    private javax.swing.JMenuItem homeAdminMenuBarAddTest;
+    private javax.swing.JMenuItem homeAdminMenuBarDeleteCourse;
+    private javax.swing.JMenuItem homeAdminMenuBarDeleteTest;
+    private javax.swing.JMenuItem homeAdminMenuBarEditCourse;
+    private javax.swing.JMenu homeCourseMenu;
     private javax.swing.JButton homeEditProfileButton;
     private javax.swing.JLabel homeImgLabel;
     private javax.swing.JButton homeLaporanButton;
     private javax.swing.JButton homeLogoutButton;
+    private javax.swing.JMenuItem homeMenuBarAmbilCourse;
+    private javax.swing.JMenuItem homeMenuBarEditProfil;
+    private javax.swing.JMenuItem homeMenuBarLaporan;
+    private javax.swing.JMenuItem homeMenuBarLogout;
+    private javax.swing.JMenuItem homeMenuBarRateCourse;
+    private javax.swing.JMenuItem homeMenuBarRateTeacher;
+    private javax.swing.JMenuItem homeMenuBarTerminate;
+    private javax.swing.JMenuItem homeMenuBarTest;
     private javax.swing.JButton homeTerminateButton;
     private javax.swing.JButton homeTestButton;
     private javax.swing.JLabel idCourseRate;
@@ -1254,8 +1579,12 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JLabel labelIDCourse;
     private javax.swing.JLabel labelNamaCourse;
     private javax.swing.JTable laporanCourseTable;

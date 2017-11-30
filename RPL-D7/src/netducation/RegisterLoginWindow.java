@@ -65,6 +65,8 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         registerRetypePasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 255, 255));
+        setForeground(java.awt.Color.gray);
         setResizable(false);
 
         loginLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -91,14 +93,14 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
 
         registerCheckPassLabel.setText("Retype Password:");
 
-        loginButton.setText("Let me in...");
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Login Icon.png"))); // NOI18N
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
             }
         });
 
-        registerButton.setText("Yes, i want to join");
+        registerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Register Icon.png"))); // NOI18N
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -121,50 +123,49 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginConfirmationLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(loginPassLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(loginLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(loginNameLabel)
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(loginUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGap(88, 88, 88)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(registerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(54, 54, 54)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(loginConfirmationLabel)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(108, 108, 108)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(registerUsernameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(registerPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(loginPassLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(loginLabel, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(registerCheckPassLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(registerRetypePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(342, 342, 342)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(registerEmailLabel)
-                                                .addComponent(registerLabel)
-                                                .addComponent(registerUserLabel)
-                                                .addComponent(registerPassLabel))
-                                            .addGap(142, 142, 142)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(loginImgLabel)))
+                                                .addComponent(loginNameLabel)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(loginUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(88, 88, 88)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(registerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(108, 108, 108)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(registerUsernameField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(registerPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addComponent(registerCheckPassLabel)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(registerRetypePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(342, 342, 342)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(registerEmailLabel)
+                                            .addComponent(registerLabel)
+                                            .addComponent(registerUserLabel)
+                                            .addComponent(registerPassLabel))
+                                        .addGap(142, 142, 142)))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(73, 73, 73)
+                            .addComponent(loginImgLabel))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,7 +180,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
                             .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(loginPassLabel))
                         .addGap(18, 18, 18)
-                        .addComponent(loginButton))
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -209,34 +210,14 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
                             .addComponent(registerCheckPassLabel)
                             .addComponent(registerRetypePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(registerButton)
-                .addGap(25, 25, 25)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(loginConfirmationLabel)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        HomeWindow hw = new HomeWindow();
-        Users dataToSend = DatabaseClass.selectQueryUsersSingular(loginUsernameField.getText());
-        Boolean res = LoginLogicClass.userValidation(loginUsernameField.getText(), String.valueOf(loginPasswordField.getPassword()));
-        if (res) {
-            hw.setVisible(true);
-            hw.setTitle("NETDUCATION");
-            hw.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            this.setVisible(false);
-            hw.x = dataToSend;
-            hw.setUserLogin();
-            //hw.setCourseTable(CourseLogicClass.showAllCourseData());
-        }
-        else {
-            JOptionPane.showMessageDialog(rootPane, "USER TERDETEKSI TIDAK VALID! SILAHKAN COBA LAGI", "Login Failed", JOptionPane.ERROR_MESSAGE);
-            //loginConfirmationLabel.setText("USER TERDETEKSI TIDAK VALID! SILAHKAN COBA LAGI");
-        }
-        clearText();
-    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         String user = registerUsernameField.getText();
@@ -262,6 +243,26 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
     private void loginUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsernameFieldActionPerformed
         this.loginButtonActionPerformed(evt);
     }//GEN-LAST:event_loginUsernameFieldActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        HomeWindow hw = new HomeWindow();
+        Users dataToSend = DatabaseClass.selectQueryUsersSingular(loginUsernameField.getText());
+        Boolean res = LoginLogicClass.userValidation(loginUsernameField.getText(), String.valueOf(loginPasswordField.getPassword()));
+        if (res) {
+            hw.setVisible(true);
+            hw.setTitle("NETDUCATION");
+            hw.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            this.setVisible(false);
+            hw.x = dataToSend;
+            hw.setUserLogin();
+            //hw.setCourseTable(CourseLogicClass.showAllCourseData());
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "USER TERDETEKSI TIDAK VALID! SILAHKAN COBA LAGI", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            //loginConfirmationLabel.setText("USER TERDETEKSI TIDAK VALID! SILAHKAN COBA LAGI");
+        }
+        clearText();
+    }//GEN-LAST:event_loginButtonActionPerformed
     
     public void clearText() {
         loginPasswordField.setText("");
