@@ -5,6 +5,7 @@
  */
 package netducation;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import com.alee.laf.WebLookAndFeel;
 import javax.swing.JOptionPane;
 
@@ -277,6 +278,7 @@ public class RegisterLoginWindow extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        NativeInterface.initialize();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

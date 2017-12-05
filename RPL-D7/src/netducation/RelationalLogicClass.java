@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yoelt
  */
 public class RelationalLogicClass {
-    public static void takeCourse(Users u, Course c) {
+    public static void takeCourse(Users u, Course c, String pathFile) {
         HomeWindow hw = new HomeWindow();
         System.out.println(u.getUsername() + " " + RelationalDatabaseClass.selectCourseTakenSingular(u.getUsername(),c.getId()));
         if (RelationalDatabaseClass.selectCourseTakenSingular(u.getUsername(),c.getId()).isEmpty()) {
@@ -21,6 +21,7 @@ public class RelationalLogicClass {
             RelationalDatabaseClass.insertCourseTaken(u.getUsername(), c.getId());
             DatabaseClass.updatePoint(u.getUsername(), c.getPoinDapat());
             System.out.println(u.getUsername() + " " + c.getId());
+            CourseLogicClass.readPDF(c.getId(), pathFile);
             JOptionPane.showMessageDialog(hw, "Course berhasil diambil", "Course Completed", JOptionPane.INFORMATION_MESSAGE);
         }
         else {

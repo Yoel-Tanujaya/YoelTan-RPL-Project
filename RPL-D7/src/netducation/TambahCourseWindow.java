@@ -5,6 +5,9 @@
  */
 package netducation;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +27,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
     String courseID;
     HomeWindow h = new HomeWindow();
     Users x;
+    String path = "";
     
     public void setCourseLabel(String text) {
         this.courseLabel.setText(text);
@@ -48,6 +52,7 @@ public class TambahCourseWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         courseLabel = new javax.swing.JLabel();
         idCourseLabel = new javax.swing.JLabel();
         namaCourseLabel = new javax.swing.JLabel();
@@ -59,6 +64,8 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         poinDapatField = new javax.swing.JTextField();
         addCourseBtn = new javax.swing.JButton();
         editCourseBtn = new javax.swing.JButton();
+        browseFileCourse = new javax.swing.JButton();
+        namaFileLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +94,15 @@ public class TambahCourseWindow extends javax.swing.JFrame {
             }
         });
 
+        browseFileCourse.setText("Browse...");
+        browseFileCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                browseFileCourseActionPerformed(evt);
+            }
+        });
+
+        namaFileLabel.setText("Select File");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,24 +110,33 @@ public class TambahCourseWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(courseLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idCourseLabel)
-                            .addComponent(namaCourseLabel)
-                            .addComponent(minPoinLabel)
-                            .addComponent(poinDapatLabel))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(namaCourseField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(minPoinField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(poinDapatField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idCourseField)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(editCourseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addCourseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(courseLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idCourseLabel)
+                                    .addComponent(namaCourseLabel)
+                                    .addComponent(minPoinLabel)
+                                    .addComponent(poinDapatLabel))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(namaCourseField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(minPoinField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(poinDapatField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idCourseField))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(editCourseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(namaFileLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addCourseBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(browseFileCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +161,13 @@ public class TambahCourseWindow extends javax.swing.JFrame {
                     .addComponent(poinDapatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(browseFileCourse)
+                    .addComponent(namaFileLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addCourseBtn)
                     .addComponent(editCourseBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -150,7 +179,13 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         String nama = this.namaCourseField.getText();
         int poinMin = Integer.parseInt(this.minPoinField.getText());
         int poinDapat = Integer.parseInt(this.poinDapatField.getText());
-        int res = CourseLogicClass.insertCourseValidation(id, nama, poinMin, poinDapat, x);
+        int res = 0;
+        try {
+            res = CourseLogicClass.insertCourseValidation(id, nama, poinMin, poinDapat, x, path);
+        } catch (IOException ex) {
+            Logger.getLogger(TambahCourseWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(path);
         System.out.println(id + " " + nama + " " + poinMin + " " + poinDapat + " ");
         switch(res) {
             case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENAMBAHKAN COURSE", "Course Added", JOptionPane.INFORMATION_MESSAGE); this.setVisible(false); break;
@@ -165,13 +200,26 @@ public class TambahCourseWindow extends javax.swing.JFrame {
         String nama = this.namaCourseField.getText();
         int poinMin = Integer.parseInt(this.minPoinField.getText());
         int poinDapat = Integer.parseInt(this.poinDapatField.getText());
-        int res = CourseLogicClass.editCourseValidation(courseID, nama, poinMin, poinDapat);
+        int res = CourseLogicClass.editCourseValidation(courseID, nama, poinMin, poinDapat, path);
         switch(res) {
             case 0: JOptionPane.showMessageDialog(rootPane, "BERHASIL MENGUBAH COURSE", "Course Edited", JOptionPane.INFORMATION_MESSAGE); this.setVisible(false); break;
             case 2: JOptionPane.showMessageDialog(rootPane, "NAMA SUDAH ADA, SILAHKAN COBA LAGI", "Error", JOptionPane.ERROR_MESSAGE); break;
         }
         h.getCourseTable().repaint();
     }//GEN-LAST:event_editCourseBtnActionPerformed
+
+    private void browseFileCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseFileCourseActionPerformed
+        this.jFileChooser1.showOpenDialog(this);
+        this.jFileChooser1.setApproveButtonText("Save");
+        path = this.jFileChooser1.getSelectedFile().getAbsolutePath();
+        System.out.println(path);
+        this.namaFileLabel.setText(this.jFileChooser1.getSelectedFile().getName());
+        
+//        this.jFileChooser1.getSelectedFile().getAbsolutePath();
+//        File curFile = this.jFileChooser1.getSelectedFile();
+//        File newFile = new File("C:\\Users\\yoelt\\Documents\\5th Semester\\RPL - Software Engineering\\PROJECT RPL\\CoursePDF");
+//        FileUtils.copyDirectory(curFile, newFile);
+    }//GEN-LAST:event_browseFileCourseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,14 +258,17 @@ public class TambahCourseWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCourseBtn;
+    private javax.swing.JButton browseFileCourse;
     private javax.swing.JLabel courseLabel;
     private javax.swing.JButton editCourseBtn;
     private javax.swing.JTextField idCourseField;
     private javax.swing.JLabel idCourseLabel;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JTextField minPoinField;
     private javax.swing.JLabel minPoinLabel;
     private javax.swing.JTextField namaCourseField;
     private javax.swing.JLabel namaCourseLabel;
+    private javax.swing.JLabel namaFileLabel;
     private javax.swing.JTextField poinDapatField;
     private javax.swing.JLabel poinDapatLabel;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,15 @@
  */
 package netducation;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  * @author yoelt
  */
 public class CourseLogicClass {
+    
+    
     public static String bahasaProgram(String id) {
         String ret = "";
         if (id.startsWith("CPL")) {
@@ -43,8 +54,9 @@ public class CourseLogicClass {
         return RelationalDatabaseClass.courseAverageRating(cID);
     }
     
-    public static int insertCourseValidation(String id, String nama, int poinMin, int poinDapat, Users u) {
+    public static int insertCourseValidation(String id, String nama, int poinMin, int poinDapat, Users u, String pathPDF) throws IOException {
         List<Course> lc = CourseDatabaseClass.selectQueryCourse();
+        String relPath = ".\\PDFCourse\\";
         int res = 0;
         Boolean validity = true;
         for (Course c : lc) {
@@ -58,14 +70,26 @@ public class CourseLogicClass {
             }
         }
         if (validity == true) {
+            String p = pathPDF.substring(pathPDF.lastIndexOf("\\")+1);
+            File in = new File(pathPDF);
+            File out = new File(relPath+p);
+            System.out.println(in.toPath() + "  " + out.toPath());
             CourseDatabaseClass.insertQueryCourse(id, nama, poinMin, poinDapat, u.getUsername());
+            CourseDatabaseClass.insertPDF(id, relPath+p);
+            try {
+                Files.copy(in.toPath(), out.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
             System.out.println("Course Created");
         }
         return res;
     }
     
-    public static int editCourseValidation(String id, String nama, int poinMin, int poinDapat) {
+    public static int editCourseValidation(String id, String nama, int poinMin, int poinDapat, String pathPDF) {
         List<Course> lc = CourseDatabaseClass.selectQueryCourse();
+        String relPath = ".\\PDFCourse\\";
         int res = 0;
         Boolean validity = true;
         for (Course c : lc) {
@@ -75,7 +99,18 @@ public class CourseLogicClass {
             }
         }
         if (validity == true) {
+            String p = pathPDF.substring(pathPDF.lastIndexOf("\\")+1);
+            File in = new File(pathPDF);
+            File out = new File(p);
+            System.out.println(in.toPath() + "  " + out.toPath());
             CourseDatabaseClass.updateQueryCourse(id, nama, poinMin, poinDapat);
+            CourseDatabaseClass.updatePDF(id, relPath+p);
+            try {
+                Files.copy(in.toPath(), out.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
             System.out.println("Course Edited");
         }
         return res;
@@ -255,5 +290,35 @@ public class CourseLogicClass {
         return tm;
     }
     
+    public static void readPDF (String id, String filename) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File(CourseDatabaseClass.selectPDF(id));
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                
+            }
+        }
+    }
     
+    public static int tambahSoal(String id, String soal, String benar, int poin) {
+        int res = 0;
+        if (soal.isEmpty() || benar.isEmpty() || poin==0) {
+            res = 0;
+        }
+        else {
+            CourseDatabaseClass.insertTest(id, soal, benar, poin);
+            res = 1;
+        }
+        return res;
+    }
+    
+    public static void tambahPoinTest (String user, int poin) {
+        DatabaseClass.updatePoint(user, poin);
+    }
+    
+//    public static void ambilTest(String user, String course) {
+//        List<Soal> ls = new ArrayList<>();
+//        for (Soal sl)
+//    }
 }

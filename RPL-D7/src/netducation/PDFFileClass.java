@@ -5,17 +5,20 @@
  */
 package netducation;
 
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 import com.lowagie.text.pdf.PdfWriter;
+import java.awt.BorderLayout;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -35,7 +38,7 @@ public class PDFFileClass {
 //                }
 //            }
             
-            File f = new File("C:\\Users\\yoelt\\Documents\\5th Semester\\RPL - Software Engineering\\PROJECT RPL\\PdfNetducation\\" + user + ".pdf");
+            File f = new File("C:\\Users\\yoelt\\Documents\\GitHub\\YoelTan-RPL-Project\\RPL-D7\\PDFLaporan\\" + user + ".pdf");
             PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream (f));
             doc.open();
             PdfContentByte cb = writer.getDirectContent();
@@ -52,5 +55,15 @@ public class PDFFileClass {
         } catch (IOException | DocumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public static void showPDFPage(JPanel p) {
+        JWebBrowser fb = new JWebBrowser();
+        fb.setBarsVisible(false);
+        fb.setStatusBarVisible(false);
+        //fb.navigate("file:///C:/Users/yoelt/Documents/5th%20Semester/HMTI@2x.png");
+        p.add(fb, BorderLayout.CENTER);
+        fb.setHTMLContent("www.google.com");
+        fb.getWebBrowserWindow();
     }
 }

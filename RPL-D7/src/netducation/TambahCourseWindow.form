@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JFileChooser" name="jFileChooser1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -26,29 +30,43 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="courseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="idCourseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="namaCourseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="minPoinLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="poinDapatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="namaCourseField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="minPoinField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="poinDapatField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="idCourseField" max="32767" attributes="0"/>
+                          <Component id="courseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="editCourseBtn" min="-2" pref="85" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="addCourseBtn" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="idCourseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="namaCourseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="minPoinLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="poinDapatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="namaCourseField" alignment="0" pref="178" max="32767" attributes="0"/>
+                                  <Component id="minPoinField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="poinDapatField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="idCourseField" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="editCourseBtn" min="-2" pref="85" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="namaFileLabel" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="addCourseBtn" pref="86" max="32767" attributes="0"/>
+                          <Component id="browseFileCourse" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,10 +97,15 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="browseFileCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="namaFileLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addCourseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="editCourseBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -141,6 +164,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCourseBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="browseFileCourse">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Browse..."/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseFileCourseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="namaFileLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Select File"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

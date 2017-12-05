@@ -5,12 +5,10 @@
  */
 package netducation;
 
-import com.lowagie.text.DocumentException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,9 +18,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HomeWindow extends javax.swing.JFrame {
 
+    String pathFile = "\\PDFCourse\\";
     public Users x = new Users();
     String namaLogin;
     int poinLogin;
+    int poinTotal = 0;
+    int loopCounter = 0;
+    List<Soal> ls = new ArrayList<>();
     List<Course> lc = CourseDatabaseClass.selectQueryCourse();
     /**
      * Creates new form HomeWindow
@@ -59,17 +61,11 @@ public class HomeWindow extends javax.swing.JFrame {
             this.homeAdminMenuBarEditCourse.setEnabled(true);
             this.homeAdminMenuBarAddTest.setEnabled(true);
             this.homeAdminMenuBarDeleteTest.setEnabled(true);
+            this.ambilCourseButton.setEnabled(false);
             this.homeMenuBarAmbilCourse.setEnabled(false);
             this.homeMenuBarRateCourse.setEnabled(false);
             this.homeMenuBarRateTeacher.setEnabled(false);
             this.homeMenuBarTest.setEnabled(false);
-            this.deleteCourseButton.setEnabled(true);
-            this.editCourseButton.setEnabled(true);
-            this.tambahCourseButton.setEnabled(true);
-            this.ambilCourseButton.setEnabled(false);
-            this.homeTestButton.setEnabled(false);
-            this.rateCourseButton.setEnabled(false);
-            this.rateTeacherButton.setEnabled(false);
             this.jLabel2.setText("ADMIN REPORT");
         }
         else {
@@ -79,17 +75,11 @@ public class HomeWindow extends javax.swing.JFrame {
             this.homeAdminMenuBarEditCourse.setEnabled(false);
             this.homeAdminMenuBarAddTest.setEnabled(false);
             this.homeAdminMenuBarDeleteTest.setEnabled(false);
+            this.ambilCourseButton.setEnabled(true);
             this.homeMenuBarAmbilCourse.setEnabled(true);
             this.homeMenuBarRateCourse.setEnabled(true);
             this.homeMenuBarRateTeacher.setEnabled(true);
             this.homeMenuBarTest.setEnabled(false);
-            this.deleteCourseButton.setEnabled(false);
-            this.editCourseButton.setEnabled(false);
-            this.tambahCourseButton.setEnabled(false);
-            this.ambilCourseButton.setEnabled(true);
-            this.homeTestButton.setEnabled(true);
-            this.rateCourseButton.setEnabled(true);
-            this.rateTeacherButton.setEnabled(true);
             this.jLabel2.setText("USER REPORT");
         }
     }
@@ -161,34 +151,56 @@ public class HomeWindow extends javax.swing.JFrame {
         namaCourseRate = new javax.swing.JLabel();
         rateButton = new javax.swing.JButton();
         doRateButtonGroup = new javax.swing.ButtonGroup();
-        homeTerminateButton = new javax.swing.JButton();
+        coursePDFWindow = new javax.swing.JFrame();
+        pdfPagePanel = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        addTestWindow = new javax.swing.JFrame();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        soalTextField = new javax.swing.JTextArea();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jawabanBenarField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        pointSoalField = new javax.swing.JTextField();
+        submitSoalButton = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        courseComboBox = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        TestWindow = new javax.swing.JFrame();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        soalTestUser = new javax.swing.JTextArea();
+        endTestButton = new javax.swing.JButton();
+        nextTestButton = new javax.swing.JButton();
+        jumlahTestLabel = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jawabanTestUser = new javax.swing.JTextField();
         homeImgLabel = new javax.swing.JLabel();
-        homeEditProfileButton = new javax.swing.JButton();
-        homeTestButton = new javax.swing.JButton();
-        homeLaporanButton = new javax.swing.JButton();
-        homeLogoutButton = new javax.swing.JButton();
-        tambahCourseButton = new javax.swing.JButton();
-        editCourseButton = new javax.swing.JButton();
-        deleteCourseButton = new javax.swing.JButton();
-        ambilCourseButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         courseTable = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         searchCourseButton = new javax.swing.JButton();
-        course1StarRating = new javax.swing.JRadioButton();
-        course2StarRating = new javax.swing.JRadioButton();
-        course3StarRating = new javax.swing.JRadioButton();
-        course4StarRating = new javax.swing.JRadioButton();
+        poinDapatSlider = new javax.swing.JSlider();
+        minPoinSlider = new javax.swing.JSlider();
+        courseProgrammingLanguageOption = new javax.swing.JComboBox<>();
         course5StarRating = new javax.swing.JRadioButton();
+        course4StarRating = new javax.swing.JRadioButton();
+        course3StarRating = new javax.swing.JRadioButton();
+        course2StarRating = new javax.swing.JRadioButton();
+        course1StarRating = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        courseProgrammingLanguageOption = new javax.swing.JComboBox<>();
-        poinDapatSlider = new javax.swing.JSlider();
+        jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        minPoinSlider = new javax.swing.JSlider();
-        rateCourseButton = new javax.swing.JButton();
-        rateTeacherButton = new javax.swing.JButton();
+        ambilCourseButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         homeAccountMenu = new javax.swing.JMenu();
         homeMenuBarEditProfil = new javax.swing.JMenuItem();
@@ -590,82 +602,254 @@ public class HomeWindow extends javax.swing.JFrame {
         doRateButtonGroup.add(rate4Course);
         doRateButtonGroup.add(rate5Course);
 
+        coursePDFWindow.setSize(new java.awt.Dimension(560, 712));
+
+        javax.swing.GroupLayout pdfPagePanelLayout = new javax.swing.GroupLayout(pdfPagePanel);
+        pdfPagePanel.setLayout(pdfPagePanelLayout);
+        pdfPagePanelLayout.setHorizontalGroup(
+            pdfPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pdfPagePanelLayout.setVerticalGroup(
+            pdfPagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 621, Short.MAX_VALUE)
+        );
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setText("TITLE OF THE COURSE DISPLAYED HERE");
+
+        jButton1.setText("<");
+
+        jButton2.setText(">");
+
+        jLabel13.setText("PAGE X / XX");
+
+        javax.swing.GroupLayout coursePDFWindowLayout = new javax.swing.GroupLayout(coursePDFWindow.getContentPane());
+        coursePDFWindow.getContentPane().setLayout(coursePDFWindowLayout);
+        coursePDFWindowLayout.setHorizontalGroup(
+            coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                .addGroup(coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pdfPagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                        .addGroup(coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel13))
+                            .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel12)))
+                        .addGap(0, 31, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        coursePDFWindowLayout.setVerticalGroup(
+            coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, coursePDFWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGroup(coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addGroup(coursePDFWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(coursePDFWindowLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(pdfPagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jLabel13)
+                .addContainerGap())
+        );
+
+        addTestWindow.setSize(new java.awt.Dimension(456, 402));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel14.setText("SOAL TEST COURSE");
+
+        soalTextField.setColumns(20);
+        soalTextField.setRows(5);
+        jScrollPane3.setViewportView(soalTextField);
+
+        jLabel15.setText("Soal");
+
+        jLabel16.setText("Jawaban Benar");
+
+        jLabel18.setText("Point Soal");
+
+        submitSoalButton.setText("Submit");
+        submitSoalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitSoalButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Course ID");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jawabanBenarField)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(pointSoalField)
+                        .addGap(18, 18, 18)
+                        .addComponent(submitSoalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(courseComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(courseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 21, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jawabanBenarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(pointSoalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitSoalButton))
+                .addGap(29, 29, 29))
+        );
+
+        javax.swing.GroupLayout addTestWindowLayout = new javax.swing.GroupLayout(addTestWindow.getContentPane());
+        addTestWindow.getContentPane().setLayout(addTestWindowLayout);
+        addTestWindowLayout.setHorizontalGroup(
+            addTestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTestWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addTestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addContainerGap())
+        );
+        addTestWindowLayout.setVerticalGroup(
+            addTestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addTestWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        TestWindow.setSize(new java.awt.Dimension(412, 300));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel20.setText("TEST ");
+
+        soalTestUser.setColumns(20);
+        soalTestUser.setRows(5);
+        jScrollPane4.setViewportView(soalTestUser);
+
+        endTestButton.setText("End Test");
+
+        nextTestButton.setText("Next Test");
+        nextTestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTestButtonActionPerformed(evt);
+            }
+        });
+
+        jumlahTestLabel.setText("jLabel21");
+
+        jLabel22.setText("Soal");
+
+        jLabel23.setText("Jawab");
+
+        javax.swing.GroupLayout TestWindowLayout = new javax.swing.GroupLayout(TestWindow.getContentPane());
+        TestWindow.getContentPane().setLayout(TestWindowLayout);
+        TestWindowLayout.setHorizontalGroup(
+            TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TestWindowLayout.createSequentialGroup()
+                .addGroup(TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TestWindowLayout.createSequentialGroup()
+                        .addGroup(TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(TestWindowLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel22))
+                            .addGroup(TestWindowLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel23)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(TestWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4)
+                            .addGroup(TestWindowLayout.createSequentialGroup()
+                                .addComponent(endTestButton)
+                                .addGap(84, 84, 84)
+                                .addComponent(jumlahTestLabel)
+                                .addGap(86, 86, 86)
+                                .addComponent(nextTestButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jawabanTestUser))))
+                .addContainerGap())
+            .addGroup(TestWindowLayout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(jLabel20)
+                .addContainerGap())
+        );
+        TestWindowLayout.setVerticalGroup(
+            TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TestWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jawabanTestUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(TestWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(endTestButton)
+                    .addComponent(nextTestButton)
+                    .addComponent(jumlahTestLabel))
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        homeTerminateButton.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        homeTerminateButton.setForeground(new java.awt.Color(255, 0, 0));
-        homeTerminateButton.setText("TERMINATE ACCOUNT");
-        homeTerminateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeTerminateButtonActionPerformed(evt);
-            }
-        });
-
         homeImgLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-
-        homeEditProfileButton.setText("Edit Profil");
-        homeEditProfileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeEditProfileButtonActionPerformed(evt);
-            }
-        });
-
-        homeTestButton.setText("Test");
-        if (x.getRole() == 1) homeTestButton.setEnabled(false);
-        else homeTestButton.setEnabled(true);
-
-        homeLaporanButton.setText("Laporan");
-        if (x.getRole() == 1) homeLaporanButton.setEnabled(false);
-        else homeLaporanButton.setEnabled(true);
-        homeLaporanButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeLaporanButtonActionPerformed(evt);
-            }
-        });
-
-        homeLogoutButton.setForeground(new java.awt.Color(255, 0, 0));
-        homeLogoutButton.setText("Log Out");
-        homeLogoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeLogoutButtonActionPerformed(evt);
-            }
-        });
-
-        if (x.getRole() == 1) tambahCourseButton.setEnabled(true);
-        else tambahCourseButton.setEnabled(false);
-        tambahCourseButton.setText("TAMBAH COURSE");
-        tambahCourseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambahCourseButtonActionPerformed(evt);
-            }
-        });
-
-        if (x.getRole() == 1) editCourseButton.setEnabled(true);
-        else editCourseButton.setEnabled(false);
-        editCourseButton.setText("EDIT");
-        editCourseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editCourseButtonActionPerformed(evt);
-            }
-        });
-
-        if (x.getRole() == 1) deleteCourseButton.setEnabled(true);
-        else deleteCourseButton.setEnabled(false);
-        deleteCourseButton.setText("DELETE");
-        deleteCourseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteCourseButtonActionPerformed(evt);
-            }
-        });
-
-        ambilCourseButton.setText("AMBIL COURSE");
-        if (x.getRole() == 1) ambilCourseButton.setEnabled(false);
-        ambilCourseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ambilCourseButtonActionPerformed(evt);
-            }
-        });
 
         courseTable.setModel(CourseLogicClass.showAllCourseData(x));
         courseTable.getTableHeader().addMouseListener(new MouseAdapter() {
@@ -713,54 +897,6 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
-        course1StarRating.setText("*");
-        course1StarRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                course1StarRatingActionPerformed(evt);
-            }
-        });
-
-        course2StarRating.setText("**");
-        course2StarRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                course2StarRatingActionPerformed(evt);
-            }
-        });
-
-        course3StarRating.setText("***");
-        course3StarRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                course3StarRatingActionPerformed(evt);
-            }
-        });
-
-        course4StarRating.setText("****");
-        course4StarRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                course4StarRatingActionPerformed(evt);
-            }
-        });
-
-        course5StarRating.setText("*****");
-        course5StarRating.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                course5StarRatingActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Filter By Rating:");
-
-        jLabel8.setText("Filter By Point Earned:");
-
-        jLabel9.setText("Filter By Minimum Point:");
-
-        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C Language", "C++", "Phyton", "Swift 3", "Kotlin", "Java" }));
-        courseProgrammingLanguageOption.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseProgrammingLanguageOptionActionPerformed(evt);
-            }
-        });
-
         poinDapatSlider.setMaximum(5);
         poinDapatSlider.setMinorTickSpacing(1);
         poinDapatSlider.setValue(0);
@@ -769,8 +905,6 @@ public class HomeWindow extends javax.swing.JFrame {
                 poinDapatSliderStateChanged(evt);
             }
         });
-
-        jLabel10.setText("Filter By Programming Language:");
 
         minPoinSlider.setMaximum(5);
         minPoinSlider.setMinorTickSpacing(1);
@@ -781,19 +915,135 @@ public class HomeWindow extends javax.swing.JFrame {
             }
         });
 
-        rateCourseButton.setText("RATE COURSE");
-        rateCourseButton.addActionListener(new java.awt.event.ActionListener() {
+        courseProgrammingLanguageOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C Language", "C++", "Phyton", "Swift 3", "Kotlin", "Java" }));
+        courseProgrammingLanguageOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rateCourseButtonActionPerformed(evt);
+                courseProgrammingLanguageOptionActionPerformed(evt);
             }
         });
 
-        rateTeacherButton.setText("RATE TEACHER");
-        rateTeacherButton.addActionListener(new java.awt.event.ActionListener() {
+        course5StarRating.setText("5");
+        course5StarRating.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rateTeacherButtonActionPerformed(evt);
+                course5StarRatingActionPerformed(evt);
             }
         });
+
+        course4StarRating.setText("4");
+        course4StarRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course4StarRatingActionPerformed(evt);
+            }
+        });
+
+        course3StarRating.setText("3");
+        course3StarRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course3StarRatingActionPerformed(evt);
+            }
+        });
+
+        course2StarRating.setText("2");
+        course2StarRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course2StarRatingActionPerformed(evt);
+            }
+        });
+
+        course1StarRating.setText("1");
+        course1StarRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                course1StarRatingActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Rate.png"))); // NOI18N
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Point Earn.png"))); // NOI18N
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Min Poin.png"))); // NOI18N
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgPackage/Language.png"))); // NOI18N
+
+        ambilCourseButton.setText("AMBIL COURSE");
+        ambilCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ambilCourseButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(searchField)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchCourseButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(minPoinSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                                    .addComponent(poinDapatSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(courseProgrammingLanguageOption, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(course1StarRating)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(course2StarRating)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(course3StarRating)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(course4StarRating)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(course5StarRating)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ambilCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(0, 0, 0))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchCourseButton))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(poinDapatSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(minPoinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(course5StarRating)
+                        .addComponent(course4StarRating)
+                        .addComponent(course3StarRating)
+                        .addComponent(course2StarRating)
+                        .addComponent(course1StarRating)
+                        .addComponent(ambilCourseButton)))
+                .addContainerGap())
+        );
 
         homeAccountMenu.setText("Account");
 
@@ -816,7 +1066,7 @@ public class HomeWindow extends javax.swing.JFrame {
         homeAccountMenu.add(homeMenuBarLaporan);
 
         homeMenuBarTest.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, 0));
-        homeMenuBarTest.setText("Test");
+        homeMenuBarTest.setText("Ambil Test");
         homeMenuBarTest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeMenuBarTestActionPerformed(evt);
@@ -927,125 +1177,30 @@ public class HomeWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(course1StarRating)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(course2StarRating)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(course3StarRating)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(course4StarRating)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(course5StarRating)
-                        .addGap(17, 17, 17))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tambahCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ambilCourseButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(homeTerminateButton)
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(deleteCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rateCourseButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rateTeacherButton))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(12, 12, 12))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(homeImgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(32, 32, 32)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(homeEditProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(homeTestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(homeLaporanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(homeLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(searchCourseButton)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(20, 20, 20)
-                                .addComponent(poinDapatSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(homeImgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(minPoinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addComponent(homeImgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(homeEditProfileButton)
-                            .addComponent(homeTestButton))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(homeLaporanButton)
-                            .addComponent(homeLogoutButton)))
-                    .addComponent(homeImgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchCourseButton))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(course1StarRating)
-                    .addComponent(course2StarRating)
-                    .addComponent(course3StarRating)
-                    .addComponent(course4StarRating)
-                    .addComponent(course5StarRating))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(poinDapatSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(minPoinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(courseProgrammingLanguageOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(33, 33, 33)
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel9)
+                        .addGap(105, 105, 105))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteCourseButton)
-                    .addComponent(editCourseButton)
-                    .addComponent(rateCourseButton)
-                    .addComponent(rateTeacherButton))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(homeTerminateButton)
-                    .addComponent(tambahCourseButton)
-                    .addComponent(ambilCourseButton))
                 .addContainerGap())
         );
 
@@ -1082,29 +1237,9 @@ public class HomeWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void homeEditProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeEditProfileButtonActionPerformed
-        this.HomeEditProfilWindow.setVisible(true);
-        this.HomeEditProfilWindow.setAlwaysOnTop(true);
-        this.editEmailField.setText(x.getEmail());
-        this.editUsernameField.setText(x.getUsername());
-    }//GEN-LAST:event_homeEditProfileButtonActionPerformed
-
-    private void homeLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeLogoutButtonActionPerformed
-        RegisterLoginWindow f1 = new RegisterLoginWindow();
-        this.setVisible(false);
-        f1.setVisible(true);
-        f1.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    }//GEN-LAST:event_homeLogoutButtonActionPerformed
-
     private void editClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editClearButtonActionPerformed
         clearText();
     }//GEN-LAST:event_editClearButtonActionPerformed
-
-    private void homeTerminateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeTerminateButtonActionPerformed
-        HomeWindow h = new HomeWindow();
-        this.TerminateAccount.setVisible(true);
-        this.TerminateAccount.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_homeTerminateButtonActionPerformed
    
     private void terminateButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminateButton1ActionPerformed
         RegisterLoginWindow f1 = new RegisterLoginWindow();
@@ -1134,94 +1269,6 @@ public class HomeWindow extends javax.swing.JFrame {
             terminateRetypePasswordField1.setText("");
         }
     }//GEN-LAST:event_terminateButton1ActionPerformed
-
-    private void deleteCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCourseButtonActionPerformed
-        String id = (String) this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0);
-        int x = JOptionPane.showConfirmDialog(rootPane, "Yakin ingin menghapus course??", "Delete Course", JOptionPane.YES_NO_OPTION);
-        if (x == JOptionPane.YES_OPTION) {
-            RelationalLogicClass.deleteCourse(id);
-            CourseLogicClass.deleteCourse(id);
-        }
-        else {
-            
-        }
-    }//GEN-LAST:event_deleteCourseButtonActionPerformed
-
-    private void tambahCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahCourseButtonActionPerformed
-        TambahCourseWindow tc = new TambahCourseWindow();
-        tc.x = x;
-        tc.setVisible(true);
-        tc.setCourseLabel("Data Course Baru");
-    }//GEN-LAST:event_tambahCourseButtonActionPerformed
-
-    private void editCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCourseButtonActionPerformed
-        TambahCourseWindow tc = new TambahCourseWindow();
-        String cID = (String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0);
-        Course toEdit = CourseDatabaseClass.selectQueryCourseSingular((String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0));
-        if (toEdit.getTeacher().equals(x.getUsername())) {
-            tc.courseID = (String) getCourseTable().getModel().getValueAt(this.getCourseTable().getSelectedRow(), 0);
-            tc.setVisible(true);
-            tc.setCourseLabel("Edit Data Course");
-            tc.setAlwaysOnTop(true);
-            System.out.println(tc.courseID);
-        }
-        else {
-            JOptionPane.showMessageDialog(rootPane, "Bukan Course Anda", "Edit Failed", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_editCourseButtonActionPerformed
-
-    private void searchCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCourseButtonActionPerformed
-        criteria = searchField.getText();
-//        if (searchField.getText().isEmpty() || searchField.getText().equals("")) {
-//            this.courseTable.setModel(CourseLogicClass.showAllCourseData(x));
-//        }
-//        else {
-//            this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
-//        }
-        this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
-        statusSort = 1;
-    }//GEN-LAST:event_searchCourseButtonActionPerformed
-
-    private void homeLaporanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeLaporanButtonActionPerformed
-        this.HomeLaporanWindow.setVisible(true);
-        String poin = String.valueOf(x.getPoint());
-        this.namaUser.setText(x.getUsername());
-        this.pointUser.setText(poin);
-        if (x.getRole() == 1) {
-            this.jLabel7.setText("COURSE YANG DIPUBLISH");
-            this.pointUser.setText(RelationalDatabaseClass.adminAverageRating(x.getUsername()));
-            this.rankUser.setText("Administrator");
-            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseByAdmin(x));
-        }
-        else {
-            this.laporanCourseTable.setModel(RelationalLogicClass.showCourseTakenByUsername(x));
-            if (x.getPoint() >= 0 && x.getPoint() <= 500) this.rankUser.setText("Beginner");
-            else if (x.getPoint() > 501 && x.getPoint() <= 1000) this.rankUser.setText("Elite");
-            else if (x.getPoint() > 1001 && x.getPoint() <= 1500) this.rankUser.setText("Professional");
-            else if (x.getPoint() > 1501 && x.getPoint() <= 2000) this.rankUser.setText("Master");
-            else if (x.getPoint() > 2001 && x.getPoint() <= 3000) this.rankUser.setText("Expert");
-            else if (x.getPoint() > 3001) this.rankUser.setText("AI");
-        }
-        
-        
-    }//GEN-LAST:event_homeLaporanButtonActionPerformed
-
-    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
-        String criteria2 = searchField.getText();
-        if (searchField.getText().isEmpty() || searchField.getText().equals("")) {
-            this.courseTable.setModel(CourseLogicClass.showAllCourseData(x));
-        }
-        else {
-            this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
-        }
-        statusSort = 1;
-    }//GEN-LAST:event_searchFieldActionPerformed
-
-    private void ambilCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambilCourseButtonActionPerformed
-        Course c = CourseDatabaseClass.selectQueryCourseSingular((String) courseTable.getModel().getValueAt(courseTable.getSelectedRow(), 0));
-        System.out.println(c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
-        RelationalLogicClass.takeCourse(x, c);
-    }//GEN-LAST:event_ambilCourseButtonActionPerformed
 
     private void course1StarRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_course1StarRatingActionPerformed
         star = 1;
@@ -1301,36 +1348,6 @@ public class HomeWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rateButtonActionPerformed
 
-    private void rateCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateCourseButtonActionPerformed
-        if (RelationalLogicClass.checkRatingCourseValidation(x.getUsername(), (String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0))==false) {
-            JOptionPane.showMessageDialog(rootPane, "Cannot rate (course not taken / double rate)", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            this.rateWindow.setVisible(true);
-            this.labelIDCourse.setText("Nama Course: ");
-            this.labelNamaCourse.setText("ID Course: ");
-            this.idCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0));
-            this.namaCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 1));
-            rateSelected=0; iniRate=1;
-        }
-        
-    }//GEN-LAST:event_rateCourseButtonActionPerformed
-
-    private void rateTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateTeacherButtonActionPerformed
-        if (RelationalLogicClass.checkRatingAdminValidation(x.getUsername(),(String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5), (String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 0))==false) {
-            JOptionPane.showMessageDialog(rootPane, "Cannot rate (course not taken / double rate)", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            this.rateWindow.setVisible(true);
-            this.labelIDCourse.setText("Nama Admin: ");
-            this.labelNamaCourse.setText("Average Rating: ");
-            this.idCourseRate.setText((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5));
-            this.namaCourseRate.setText(RelationalDatabaseClass.adminAverageRating((String)this.courseTable.getModel().getValueAt(this.courseTable.getSelectedRow(), 5)));
-            rateSelected=0; iniRate=2;
-        }
-        
-    }//GEN-LAST:event_rateTeacherButtonActionPerformed
-
     private void saveToPdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToPdfButtonActionPerformed
         PDFFileClass.PrintFrameToPDF(HomeLaporanWindow, x.getUsername());
         JOptionPane.showMessageDialog(rootPane, "PDF Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -1395,7 +1412,17 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMenuBarLaporanActionPerformed
 
     private void homeMenuBarTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarTestActionPerformed
-        // TODO add your handling code here:
+        this.TestWindow.setVisible(true);
+        poinTotal = 0;
+        int counter = 1;
+        ls = CourseDatabaseClass.selectTest((String) courseTable.getModel().getValueAt(courseTable.getSelectedRow(), 0));
+        while (loopCounter > ls.size()) {
+            this.jumlahTestLabel.setText("Soal "+counter+" / "+ls.size());
+            this.soalTestUser.setText(ls.get(loopCounter).getSoal());
+            
+        }
+        CourseLogicClass.tambahPoinTest(x.getUsername(), poinTotal);
+        JOptionPane.showMessageDialog(rootPane, "Anda mendapatkan tambahan "+poinTotal+" poin", "Test Completed", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_homeMenuBarTestActionPerformed
 
     private void homeMenuBarLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarLogoutActionPerformed
@@ -1407,8 +1434,7 @@ public class HomeWindow extends javax.swing.JFrame {
 
     private void homeMenuBarAmbilCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarAmbilCourseActionPerformed
         Course c = CourseDatabaseClass.selectQueryCourseSingular((String) courseTable.getModel().getValueAt(courseTable.getSelectedRow(), 0));
-        System.out.println(c.getId() + " " + c.getNama() + " " + c.getPoinMinimum() + " " + c.getPoinDapat() + " " + c);
-        RelationalLogicClass.takeCourse(x, c);
+        RelationalLogicClass.takeCourse(x, c, CourseDatabaseClass.selectPDF(c.getId()));
     }//GEN-LAST:event_homeMenuBarAmbilCourseActionPerformed
 
     private void homeMenuBarRateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuBarRateCourseActionPerformed
@@ -1475,12 +1501,63 @@ public class HomeWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_homeAdminMenuBarDeleteCourseActionPerformed
 
     private void homeAdminMenuBarAddTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarAddTestActionPerformed
+        CourseDatabaseClass.getCourseList(courseComboBox);
+        this.addTestWindow.setVisible(true);
         
     }//GEN-LAST:event_homeAdminMenuBarAddTestActionPerformed
 
     private void homeAdminMenuBarDeleteTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeAdminMenuBarDeleteTestActionPerformed
         
     }//GEN-LAST:event_homeAdminMenuBarDeleteTestActionPerformed
+
+    private void searchCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCourseButtonActionPerformed
+        criteria = searchField.getText();
+        //        if (searchField.getText().isEmpty() || searchField.getText().equals("")) {
+            //            this.courseTable.setModel(CourseLogicClass.showAllCourseData(x));
+            //        }
+        //        else {
+            //            this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
+            //        }
+        this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
+        statusSort = 1;
+    }//GEN-LAST:event_searchCourseButtonActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        String criteria2 = searchField.getText();
+        if (searchField.getText().isEmpty() || searchField.getText().equals("")) {
+            this.courseTable.setModel(CourseLogicClass.showAllCourseData(x));
+        }
+        else {
+            this.courseTable.setModel(CourseLogicClass.searchCourse(x, criteria));
+        }
+        statusSort = 1;
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void ambilCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambilCourseButtonActionPerformed
+        Course c = CourseDatabaseClass.selectQueryCourseSingular((String) courseTable.getModel().getValueAt(courseTable.getSelectedRow(), 0));
+        RelationalLogicClass.takeCourse(x, c, CourseDatabaseClass.selectPDF(c.getId()));
+    }//GEN-LAST:event_ambilCourseButtonActionPerformed
+
+    private void submitSoalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSoalButtonActionPerformed
+        int poin = 0;
+        String soal = this.soalTextField.getText();
+        String benar = this.jawabanBenarField.getText();
+        poin = Integer.parseInt(this.pointSoalField.getText());
+        int res = CourseLogicClass.tambahSoal(this.courseComboBox.getSelectedItem().toString(), soal, benar, poin);
+        if (res==0) {
+            JOptionPane.showMessageDialog(rootPane, "Data Tidak Lengkap, Silahkan isi data yang kosong", "Add Test Failed", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Test berhasil ditambahkan", "Add Test Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_submitSoalButtonActionPerformed
+
+    private void nextTestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTestButtonActionPerformed
+        if (this.jawabanTestUser.getText().equalsIgnoreCase(ls.get(loopCounter).getJawabanBenar())) {
+            poinTotal+=10;
+        }
+        this.loopCounter++;
+    }//GEN-LAST:event_nextTestButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1523,19 +1600,21 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JFrame HomeEditProfilWindow;
     private javax.swing.JFrame HomeLaporanWindow;
     private javax.swing.JFrame TerminateAccount;
+    private javax.swing.JFrame TestWindow;
+    private javax.swing.JFrame addTestWindow;
     private javax.swing.JButton ambilCourseButton;
     private javax.swing.JRadioButton course1StarRating;
     private javax.swing.JRadioButton course2StarRating;
     private javax.swing.JRadioButton course3StarRating;
     private javax.swing.JRadioButton course4StarRating;
     private javax.swing.JRadioButton course5StarRating;
+    private javax.swing.JComboBox<String> courseComboBox;
+    private javax.swing.JFrame coursePDFWindow;
     private javax.swing.JComboBox<String> courseProgrammingLanguageOption;
     private javax.swing.JTable courseTable;
-    private javax.swing.JButton deleteCourseButton;
     private javax.swing.ButtonGroup doRateButtonGroup;
     private javax.swing.JButton editButton;
     private javax.swing.JButton editClearButton;
-    private javax.swing.JButton editCourseButton;
     private javax.swing.JTextField editEmailField;
     private javax.swing.JLabel editEmailLabel;
     private javax.swing.JPasswordField editPasswordField;
@@ -1546,6 +1625,7 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel editStatusLabel;
     private javax.swing.JTextField editUsernameField;
     private javax.swing.JLabel editUsernameLabel;
+    private javax.swing.JButton endTestButton;
     private javax.swing.JMenu homeAccountMenu;
     private javax.swing.JMenu homeAdminMenu;
     private javax.swing.JMenuItem homeAdminMenuBarAddCourse;
@@ -1554,10 +1634,7 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem homeAdminMenuBarDeleteTest;
     private javax.swing.JMenuItem homeAdminMenuBarEditCourse;
     private javax.swing.JMenu homeCourseMenu;
-    private javax.swing.JButton homeEditProfileButton;
     private javax.swing.JLabel homeImgLabel;
-    private javax.swing.JButton homeLaporanButton;
-    private javax.swing.JButton homeLogoutButton;
     private javax.swing.JMenuItem homeMenuBarAmbilCourse;
     private javax.swing.JMenuItem homeMenuBarEditProfil;
     private javax.swing.JMenuItem homeMenuBarLaporan;
@@ -1566,12 +1643,23 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem homeMenuBarRateTeacher;
     private javax.swing.JMenuItem homeMenuBarTerminate;
     private javax.swing.JMenuItem homeMenuBarTest;
-    private javax.swing.JButton homeTerminateButton;
-    private javax.swing.JButton homeTestButton;
     private javax.swing.JLabel idCourseRate;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1580,11 +1668,19 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JTextField jawabanBenarField;
+    private javax.swing.JTextField jawabanTestUser;
+    private javax.swing.JLabel jumlahTestLabel;
     private javax.swing.JLabel labelIDCourse;
     private javax.swing.JLabel labelNamaCourse;
     private javax.swing.JTable laporanCourseTable;
@@ -1595,7 +1691,10 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JSlider minPoinSlider;
     private javax.swing.JLabel namaCourseRate;
     private javax.swing.JLabel namaUser;
+    private javax.swing.JButton nextTestButton;
+    private javax.swing.JPanel pdfPagePanel;
     private javax.swing.JSlider poinDapatSlider;
+    private javax.swing.JTextField pointSoalField;
     private javax.swing.JLabel pointUser;
     private javax.swing.JLabel rankUser;
     private javax.swing.JRadioButton rate1Course;
@@ -1605,13 +1704,13 @@ public class HomeWindow extends javax.swing.JFrame {
     private javax.swing.JRadioButton rate5Course;
     private javax.swing.JButton rateButton;
     private javax.swing.ButtonGroup rateButtonGroup;
-    private javax.swing.JButton rateCourseButton;
-    private javax.swing.JButton rateTeacherButton;
     private javax.swing.JFrame rateWindow;
     private javax.swing.JButton saveToPdfButton;
     private javax.swing.JButton searchCourseButton;
     private javax.swing.JTextField searchField;
-    private javax.swing.JButton tambahCourseButton;
+    private javax.swing.JTextArea soalTestUser;
+    private javax.swing.JTextArea soalTextField;
+    private javax.swing.JButton submitSoalButton;
     private javax.swing.JButton terminateButton1;
     private javax.swing.JPasswordField terminatePasswordField1;
     private javax.swing.JPasswordField terminateRetypePasswordField1;

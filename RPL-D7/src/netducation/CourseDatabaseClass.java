@@ -5,6 +5,13 @@
  */
 package netducation;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +19,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 
 public class CourseDatabaseClass {   
     //QUERY UNTUK SELECT SEMUA COURSE YANG ADA DALAM DATABASE, TANPA CRITERIA ATAU PARAMETER KHUSUS, HANYA SELECT ALL FORM COURSE SAJA
@@ -201,4 +211,163 @@ public class CourseDatabaseClass {
         }
     }
     
+    public static void insertPDF(String courseID, String filename) {
+        String sql = "INSERT INTO course_file VALUES(?,?)";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, courseID);
+            pstmt.setString(2, filename);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static String selectPDF(String courseID) {
+        String sql = "SELECT pdf FROM course_file WHERE courseID='" + courseID + "'";
+        String pathPDF = "";
+        try (Connection conn = DatabaseClass.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                pathPDF = rs.getString("pdf");
+                System.out.println(pathPDF);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return pathPDF;
+    }
+    
+    public static void updatePDF(String id, String file) {
+        String sql = "UPDATE course_file SET file = ? WHERE courseID = ?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, file);
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static byte[] readFile(String file) {
+        ByteArrayOutputStream bos = null;
+        try {
+            File f = new File(file);
+            FileInputStream fis = new FileInputStream(f);
+            byte[] buffer = new byte[1024];
+            bos = new ByteArrayOutputStream();
+            for (int len; (len = fis.read(buffer)) != -1;) {
+                bos.write(buffer, 0, len);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (IOException e2) {
+            System.err.println(e2.getMessage());
+        }
+        if (bos != null) {
+            System.out.println("Success");
+            return bos.toByteArray();
+        }
+        else {
+            System.out.println("Error");
+            return null;
+        }
+    }
+    
+    public static void insertPDFBlob(String id, String filename) {
+        String sql = "INSERT INTO course_file VALUES(?,?)";
+        try (Connection conn = DatabaseClass.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, id);
+            if (readFile(filename)!=null) {
+                System.out.println("Byte Found");
+                pstmt.setBytes(2, readFile(filename));
+            }
+            else {
+                System.out.println("ERROR");
+                pstmt.setBytes(2, readFile(filename));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("BLOB File Saved");
+    }
+    
+    public static void selectPDFBlob(String id, String filename) {
+        FileOutputStream out = null;
+        String sql = "SELECT pdf FROM course_file WHERE courseID='" + id + "'";
+        try (Connection conn = DatabaseClass.connect(); 
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            File file = new File(filename);
+            out = new FileOutputStream(file);
+            while (rs.next()) {
+                InputStream in = rs.getBinaryStream("pdf");
+                byte[] buffer = new byte[1024];
+                while (in.read(buffer) > 0) {
+                    out.write(buffer);
+                }
+            }
+        } catch (SQLException | IOException e) {
+            System.out.println(e.getMessage());
+        } 
+    }
+    
+    public static void updatePDFBlob(String id, String file) {
+        String sql = "UPDATE course_file SET file = ? WHERE courseID = ?";
+        try (Connection conn = DatabaseClass.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setBytes(1, readFile(file));
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void getCourseList(JComboBox j) {
+        String sql = "SELECT courseID FROM course";
+        try (Connection conn = DatabaseClass.connect();
+            Statement stmt  = conn.createStatement();
+            ResultSet rs    = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                String course = rs.getString("courseID");
+                j.addItem(course);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());        
+        }
+    }
+    
+    public static void insertTest(String courseID, String soal, String benar, int poin) {
+        String sql = "INSERT INTO test VALUES (?,?,?,?,?)";
+        try (Connection conn = DatabaseClass.connect(); 
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, courseID);
+            pstmt.setString(2, soal);
+            pstmt.setString(3, benar);
+            pstmt.setInt(5, poin);            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static List<Soal> selectTest(String courseID) {
+        List<Soal> soal = new ArrayList<>();
+        String sql = "SELECT * FROM test WHERE courseID='" + courseID + "'";
+        try (Connection conn = DatabaseClass.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+            Soal s = new Soal();
+            s.setCourseID(rs.getNString("courseID"));
+            s.setSoal(rs.getString("soal"));
+            s.setJawabanBenar(rs.getString("jawabanNenar"));
+            s.setPoin(rs.getInt("poin"));
+            soal.add(s);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return soal;
+    }
 }
