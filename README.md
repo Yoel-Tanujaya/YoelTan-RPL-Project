@@ -1,3 +1,3 @@
 # YoelTan-RPL-Project
 
-Sebuah project untuk mengisi waktu selo.
+Software Engineering Final Project for 5th Semester (December 2017)
